@@ -1,0 +1,9 @@
+<p>The settings page is your portal to changing your own personal information in the system (such as your name, email, phone, etc) as well as a link to view other users in the system so you'll know who you're working with.</p>
+<br />
+<div class="modal-link">
+	<div class="modal-link-holder">
+		<div class="modal-link-frame">
+			<a class="btn" href="#" onclick="Modalbox.hide()"><span>Close &gt;</span></a>
+		</div>
+	</div>
+</div>

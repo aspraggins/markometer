@@ -1,0 +1,184 @@
+<?php # Done page for campaign creation
+
+require_once('/home/rneel/web/htdocs/includes/config.inc.php');
+include('/home/rneel/web/htdocs/includes/header.html');
+
+//Check for logged in user:
+if (!isset($_SESSION['id'])) {
+	header("Location: /");
+	exit();
+}
+?>
+
+<h1>
+<?php 
+if($_SESSION['multiaccounts']) {
+    if (isset($_SESSION['accountname'])) echo $_SESSION['accountname'] . ': '; 
+}
+?>
+New Marketing Campaign Created</h1><br />
+	
+<?php
+//Database:
+require_once(MYSQL);
+
+//Handle Submission if choosing an existing action page:
+if (isset($_POST['submitted'])) {
+	if(isset($_POST['chooseaction'])) {
+		if(strlen(trim($_POST['chooseaction']))>0) {
+			$chooseaction = trim($_POST['chooseaction']);
+			
+			//update campaign record to include this chosen action page:
+			$q = "UPDATE campaigns " .
+			"SET updateflag=1-updateflag, action_page='$chooseaction' " . 
+			"WHERE id='{$_SESSION['campaignid']}' LIMIT 1"; 
+			
+			$r = mysqli_query($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " 
+			. mysqli_error($dbc));
+
+			//Check success of campaigns table update:
+			if (mysqli_affected_rows($dbc) == 1) {
+				//Success! Move to actionpage done page, with action page chosen message:
+				//$url = '/create/actionpage/done/?action=pagechosen&actionid=' . $chooseaction;
+				$url = '/create/form/done/?action=pagechosen';
+				header("Location: $url");
+			} else {
+				//If it did not run okay
+				echo '<p class="error">This action page could not be chosen due to a system
+				error. We apologize for any inconvenience.</p>';
+			}
+		}
+	}
+}
+
+//Look up actual charged rate for user's requested level of service:
+$q = "SELECT * FROM rates WHERE level='{$_SESSION['campaign_rate']}'";
+$r = mysqli_query($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " 
+. mysqli_error($dbc));
+
+$row = mysqli_fetch_array($r, MYSQLI_ASSOC);
+$rate = $row['rate'];
+$level = $_SESSION['campaign_rate'];
+//Decide what to show based on level of service:
+if($level>=10 && $level<20) {
+	$domain = FALSE; $phone = FALSE; $action = FALSE;
+}else if($level>=20 && $level<30) {
+	$domain = FALSE; $phone = FALSE; $action = TRUE;
+}else if($level>=30 && $level<40) {
+	$domain = TRUE; $phone = FALSE; $action = TRUE;
+}else if($level>=40 && $level<50) {
+	$domain = FALSE; $phone = TRUE; $action = TRUE;
+}else if($level>=50) {
+	$domain = TRUE; $phone = TRUE; $action = TRUE;
+}
+?>
+
+<br /><table border="0" width="70%"><tr><td>
+<b>Congratulations! You have successfully set up a marketing campaign for <u><?php echo $_SESSION['campaign_name']?></u> that will start on <u><?php echo date('M j, Y', strtotime($_SESSION['campaign_begin'])); ?></u><?php if(strlen($_SESSION['campaign_end']>2)) {echo ' and end on <u>' . date('M j, Y', strtotime($_SESSION['campaign_end'])) . '.';}else{echo '.';} ?></u><br /><br />
+
+<?php 
+echo '<div id="toolsoverall" style="display:';
+if($domain || $phone) {
+	echo 'inline">';
+}else{
+	echo 'none">';
+}
+?>
+<b>Use this tool(s) to measure your marketing campaign. Copy and paste them into your copy (to ensure that you don't accidentally mistype them). Make sure that these are the <u>only</u> calls to action in your event or you may not track all of your results accurately:</b></div></td></tr></table><br /><br />
+
+<?php 
+//Show jabber about using tools (domain and phone), copying them into your advertising copy, etc?
+echo '<table border="0"><tr><td>';
+
+//Show domain?
+echo '<div style="display:';
+if($domain) {
+	echo 'inline"><table border="1" width="250">';
+}else{
+	echo 'none"><table border="1" width="250">';
+}
+?>
+
+<tr><th>Domain Name</th></tr>
+<tr><td align="center"><?php if(isset($_SESSION['campaign_domain'])) echo $_SESSION['campaign_domain']; ?></td></tr></table></div>
+</td><td>
+<?php 
+//Show phone number?
+echo '<div style="display:';
+if($phone) {
+	echo 'inline"><table border="1" width="250">';
+}else{
+	echo 'none"><table border="1" width="250">';
+}
+?>
+<tr><th>Phone</th></tr>
+<tr><td align="center"><?php if(isset($_SESSION['campaign_pnumber'])) echo $_SESSION['campaign_pnumber']; ?></td></tr></table></div>
+
+</td></tr></table>
+<br /><br />
+
+<?php 
+//show Action Page links? --revising to echo large blocks instead of using style to make visible...
+if($action) {
+	//echo '<table border="0" width="70%" style="display:inline">';
+	echo '<table border="0" width="70%" style="display:inline">' . 
+	'<tr><td><b>Next Steps: You need to choose or create your action page to use with this campaign:</b>' . 
+	'</td></tr></table>';
+	
+	echo '<table height="300" border="0"><tr><td>' . 
+	'<div style="display:inline"><table border="1" width="250" bgcolor="LightGrey">' . 
+	'<tr><td height="75" align="center"><b>Choose an Existing Action Page To Use With This Campaign:</b>' . 
+	'</td></tr><tr><td>' . 
+		'<div id="scrolldiv">';
+	
+	//query for available action pages for this account:
+	$q = "SELECT id, name " . 
+	"FROM action_pages " . 
+	"WHERE account_id='{$_SESSION['account_id']}' AND id>5 ORDER BY name";
+		
+	$r = mysqli_query($dbc,$q) or trigger_error("Query: $q\n<br />MySQL Error: " . 
+	mysqli_error($dbc));
+
+	//if action pages available, display in scrolling table:
+	if (mysqli_num_rows($r) > 0) {
+		echo '<form action="" method="post">';
+		echo '<select name="chooseaction" size="8">';
+		while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+			echo '<option value="' . 
+			$row['id'] . '">' . $row['name'] . '</option>';
+		}
+		echo '</select>';
+	}else{
+		echo 'No Action Pages Found';
+	}
+	
+	echo '</div></td></tr>';
+	if (mysqli_num_rows($r) > 0) {
+		echo '<tr><td height="40" align="center">' . 
+		'<input type="hidden" name="submitted" value="TRUE" />' .
+		'<input type="submit" value="Choose This Action Page"></form></td></tr>';
+	}
+	echo '</table></div></td><td>';
+
+	//show "OR":
+	echo '<table border="0"><div style="display:inline">' . 
+	'<tr><td><b>OR</b></td></tr></div></table></td><td>';
+
+	//show new Action Page link
+	echo '<div style="display:inline"><table border="1" width="250" bgcolor="LightGrey">' .
+	'<tr><td height="90" align="center"><b>Create A New Action Page For This Campaign</b></td></tr>' . 
+	'<tr><td width="270" height="200" align="center"><a href="/create/actionpage/choose/?camp=';
+	if(isset($_SESSION['campaignid'])) echo $_SESSION['campaignid']; 
+	echo '">Create a New Action Page</a></td>' . 
+	'</tr></table></div></td></tr></table>';
+} else {
+	//show Import leads link?
+	echo '<table border="0" width="70%" style="display:inline">' . 
+	'<tr><td><b>Next Steps: <a href="/manage/leads/import">Import Leads For Your Campaign.</a>' . 
+	'</b></tr></td></table>';
+}
+?>
+
+<?php //Include the HTML footer
+include ('/home/rneel/web/htdocs/includes/footer.html');
+?>

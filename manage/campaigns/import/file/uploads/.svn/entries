@@ -1,0 +1,28 @@
+10
+
+dir
+7814
+svn+ssh://rneel@mp41.com/svnrepos/web/trunk/htdocs/manage/campaigns/import/file/uploads
+svn+ssh://rneel@mp41.com/svnrepos/web
+
+
+
+2009-04-25T00:49:51.046469Z
+2577
+rneel
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+c4476d4a-f853-0410-b486-cc46d5653d82
+

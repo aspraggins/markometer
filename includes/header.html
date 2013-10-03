@@ -1,0 +1,172 @@
+<?php # header.html
+//This page begins the HTML header for the site
+
+//Start output buffering:
+ob_start();
+
+//Initialize a session if one not already in use:
+if (session_id()=="") session_start();
+
+//Check for a $page_title value:
+/*if(!isset($page_title) && isset($_SESSION['master_account_name']) )
+{
+    $page_title = $_SESSION['master_account_name'];
+}*/
+ 
+ ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ 
+ <head>
+     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+     <title><?php 
+     if(isset($_SESSION['master_account_name']) && $_SESSION['privatelabel']=='Y') {
+     		echo $_SESSION['master_account_name'];
+     } else {
+     		echo 'Markometer';
+     }
+     ?></title>
+	<script type="text/javascript" src="/includes/ajax.js"></script>
+    <style type="text/css" media="screen">@import "/includes/layout.css";</style>
+	
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.3/prototype.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.2/scriptaculous.js"></script> -->
+	
+<script type="text/javascript" 
+        src="/includes/prototype.js"></script>
+<script type="text/javascript"
+        src="/includes/scriptaculous/scriptaculous.js"></script>	
+	 
+	 <!-- gvlalidator style sheet added 10/5 for form validation -->
+     <link rel="stylesheet" type="text/css" href="/includes/gvalidator.css" media="screen"/>   
+</head>
+   
+<body>
+    <img src="/images/mk-logo-application.jpg" width="400" height="77" />
+
+<?php
+//Code to figure out incoming subdomain, confirm in database:
+//gets the http request string
+$serverhost = explode('.',$_SERVER["HTTP_HOST"]);
+//get the subdomain
+$subdomain = $serverhost[0];
+
+if (isset($_SESSION['url_subdomain']))
+{
+	if ($_SESSION['url_subdomain']!=$subdomain)
+	{
+		//Database hit to confirm this subdomain:
+		require_once (MYSQL);
+		//Make sure the selected subdomain is a real one:
+		$q = "SELECT id FROM accounts WHERE mp_subdomain='$subdomain' AND agency='Y'";
+		$r = mysqli_query($dbc,$q) or trigger_error("Query: $q\n<br />MySQL Error: " . 
+		mysqli_error($dbc));
+		
+		if (mysqli_num_rows($r) == 1 || $subdomain=='be') {
+			$_SESSION['url_subdomain'] = $subdomain;
+		} else {
+			echo '<br />' . $subdomain . ' is not a valid Marketing Payback subdomain!';
+			exit();
+		}
+	}
+}
+else
+{
+	//Database hit to confirm this subdomain:
+	require_once (MYSQL);
+	//Make sure the selected subdomain is a real one:
+	$q = "SELECT id FROM accounts WHERE mp_subdomain='$subdomain' AND agency='Y'";
+	$r = mysqli_query($dbc,$q) or trigger_error("Query: $q\n<br />MySQL Error: " . 
+	mysqli_error($dbc));
+	
+	if (mysqli_num_rows($r) == 1 || $subdomain=='be' || $subdomain=='signup') 
+	{
+		$_SESSION['url_subdomain'] = $subdomain;
+		//Add in code to look up proper subdomain for this user:
+		if (isset($_SESSION['id']))
+		{
+			if ($subdomain=='be'){
+				$url = 'http://be.mp41.com/be';
+				header("Location: $url");
+			} elseif ($subdomain=='signup'){
+				$url = 'http://signup.mp41.com/register';
+				header("Location: $url");
+			} else {
+				$url = 'http://' . $_SESSION['master_account_subdomain'] . '.mp41.com';
+				header("Location: $url");
+			}
+		}
+	}
+	else
+	{
+		echo '<br />' . $subdomain . ' is not a valid Marketing Payback subdomain!';
+		exit();
+	}
+}
+
+//if Multiple accounts for this user, show pulldown menu
+if (isset($_SESSION['multiaccounts']) && !isset($_GET['indid']) 
+&& substr($_SERVER['PHP_SELF'],0,-11)!='/manage/campaigns/step' 
+&& $_SERVER['PHP_SELF']!='/manage/actionpages/edit/index.php')
+{
+	if ($_SESSION['multiaccounts'])
+	{
+		echo '<div id="AccountList" align="left"><form action="/account_select.php" method="post">
+		<h4>Current Account</h4><select name="AccountID" onChange="javascript:form.submit();">';
+		
+		//Loop through accounts to build pulldown menu:
+		foreach ($_SESSION['accounts'] as $key => $accountname)
+		{
+			echo '<option value="' . $key . '"';
+			if ($_SESSION['account_id'] == $key) echo ' selected';
+			echo '>' . $accountname . '</option>';
+		}
+	    echo '</select></form></div>';
+	}
+}
+?>
+
+<div id="Message">
+<?php	
+if (isset($_SESSION['first_name'])) //User logged in?
+{
+	//Check for account status, give warning messages if needed:
+	if ($_SESSION['account_active']=='1') 
+	{
+		echo '<fieldset style="width:70%; text-align:left;">';
+		echo '<p class="error"><b>Alert!</b><hr>';
+		echo 'Hi there!<br />
+		We\'ve noticed that your credit card information for this account 
+		seems to be out of date.<br />
+		Please take a moment and correct this.</p></fieldset>';
+	}
+	elseif ($_SESSION['account_active']=='2') 
+	{
+		echo '<fieldset style="width:70%; text-align:left;">';
+		echo '<p class="error"><b>Alert!</b><hr>';
+		echo 'Hello! <br />
+		We sent you a note a few weeks ago about the expiration for this account\'s 
+		credit card information, but it hasn\'t yet been updated to an 
+		up-to-date credit card. Please update this as soon as possible, 
+		so that there isn\'t a lapse in your Marketing Payback service!<br />
+		Thank you!</p></fieldset>';
+	}
+	foreach ($_SESSION['messages'] as $key => $message) //Print messages stored in messages session var.:
+	{
+		echo '<fieldset style="width:70%; text-align:left;">';
+		echo '<b>Message to Our Users:</b><hr>';
+		echo $message;
+		if (!isset($page_msgflag))
+		{
+			echo '<br /><a href="/hide_message/?id=' . $key . '">Hide This Message</a>';
+		}
+		echo '<hr></fieldset>';
+	}
+}
+?>
+</div>
+
+<div id="Header"><?php if (isset($page_header)) echo $page_header; ?></div>
+
+<div id="Content">
+<!-- End of Header -->

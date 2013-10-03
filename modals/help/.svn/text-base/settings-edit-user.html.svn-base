@@ -1,0 +1,16 @@
+<p>Editing users is simple. Just change the information you need below. Make sure you include, at a minimum, their:</p>
+<ul>
+	<li>First Name</li>
+	<li>Last Name</li>
+	<li>Company (or Business Name)</li>
+	<li>Email Address</li>
+</ul>
+<p>Their password must be at least 6 characters long.</p>
+<br />
+<div class="modal-link">
+	<div class="modal-link-holder">
+		<div class="modal-link-frame">
+			<a class="btn" href="#" onclick="Modalbox.hide()"><span>Close &gt;</span></a>
+		</div>
+	</div>
+</div>

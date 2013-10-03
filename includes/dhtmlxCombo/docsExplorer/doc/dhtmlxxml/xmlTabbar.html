@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>dhtmlxTabbar XML</title>
+		<link rel="stylesheet" href="data.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<script src="data.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body id="xml_scheme" onload="init_first_scheme()">
+		<div id="informer">
+				<span id="start_me"  onclick="init_scheme('basic',this)">Basic</span>
+				<span onclick="init_scheme('content',this)">Content</span>
+				<span onclick="init_scheme('full',this)">Full</span>
+				<span onclick="init_scheme('ajax',this)">Content in ajax mode</span>
+				<span style="text-decoration: none; cursor: default; border: none;"><big><b>|</b></big></span>
+				<span onclick="init_scheme('plain',this)">Plain view (<small><img src="../../codebase/imgs/icon_html.gif" border="0" alt="" style="margin-bottom: -3px;"> html</small>)</span>
+				<span><a href="tabbar_xml.pdf" target="_blank">Plain view (<small><img src="../../codebase/imgs/icon_pdf.gif" border="0" alt="" style="margin-bottom: -3px;"> pdf</small>)</a></span>
+		</div>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" id="xml_1">
+			<tr><th width="50%"></th><th width="50%"></td></tr>
+		</table>
+		
+<textarea id="xml_basic" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" ?> 
+<tabbar>
+	<row> # first line of tabs
+		<tab id="tab1">Tab 1</tab>	#tabs
+		<tab id="tab2">Tab 2</tab>
+		<tab id="tab3">Tab 3</tab>
+	</row>  	
+</tabbar>
+</textarea>
+
+
+<textarea id="xml_content" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" ?> 
+<tabbar>
+	<row> 
+		<tab id="tab4" href="http://dhtmlx.com">Tab 4</tab> #content for tabbar in href based mode
+		<tab id="tab5">Tab 2-1
+			<content><![CDATA[  #static content
+				content of tab 
+				]]></content>>
+		</tab>
+		<tab id="tab5">Tab 3-1
+			<content id="html_id"></content>	#linking existing html content
+		</tab>
+	</row>  	
+</tabbar>
+</textarea>
+
+
+<textarea id="xml_full" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" encoding="iso-8859-1"?> 
+<tabbar margin="10" align="right" offset="20" hrefmode="ajax-xml" tabstyle="silver" skinColors="red,green">
+	<row> # first line of tabs
+		<tab id="tab1">Tab 1</tab>	
+		<tab id="tab2" width="100">Tab 2</tab> #specifing width of label
+		<tab id="tab3" selected="true">Tab 3</tab> #selected tab
+		<tab id="tab4" href="http://dhtmlx.com">Tab 4</tab>
+		<tab id="tab5" ><![CDATA[
+			Tab <strong>5</strong>
+			]]></tab>
+	</row>
+	<row> # there can be few lines of tabs
+		<tab id="tab5" >Tab 2-1
+			<content><![CDATA[
+				content of tab 
+				]]></content>>
+		</tab>
+	</row>  
+	<row> 
+		<tab id="tab5">Tab 3-1
+			<content id="html_id"></content>
+		</tab>
+	</row>  	
+</tabbar>
+</rows>
+</textarea>
+
+
+<textarea id="xml_ajax" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" ?> 
+<content tab="id"> # response, for "ajax" loading mode only
+		...  any data here ...
+</content>
+</textarea>
+		
+			
+<div id="ev_catcher">
+	
+
+
+
+<div id="tab_" class="hidden">
+	tag represent tab inside tabbar
+	<h4>Mandatory attributes</h4>
+	<li>id - identificator of tab</li>
+	<h4>Optional attributes</h4>
+	<li>width - widht of tab label</li>
+	<li>selected - auto-selected on load</li>
+	<li>href - url for dynamic content</li>
+</div>
+
+
+<div id="tab_id" class="hidden">
+	identificator of tab<br>
+	must be unique per tabbar<br>
+	can contain any combination of chars | numbers
+</div>
+<div id="tab_width" class="hidden">
+	widht of tab label<br>
+	can be set to any positive integer value<br>
+	size auto detection can be forced by using * as value
+</div>
+<div id="tab_selected" class="hidden">
+	if attribute present - tab will be selected after data loading<br>
+	only one selected tab per tabbar allowed
+</div>
+<div id="tab_href" class="hidden">
+	in case of dynamical loading mode (ajax, iframe, etc )<br>
+	contains url to page which need to be loaded
+</div>
+
+
+<div id="content_" class="hidden">
+	optional tag, can be used to set content of tab directly in HTML<br>
+	if such tag exists, its content will be used as value of the tab <br>
+	if tag has "id" attribute, component will look for HTML container with same ID and use it as tab content
+</div>
+
+<div id="content_id" class="hidden">
+	if tag has "id" attribute, component will look for HTML container with same ID and use it as tab content<br>
+	basically it equals to tabbar.setTabContent(xml.tab.content.id)
+</div>
+
+<div id="content_tab" class="hidden">
+	when loading data in "ajax" mode, loaded data also presented as XML, with top content tag<br>
+	tab attribute contains ID of tab for which data loaded<br>
+	in most cases, using of "ajax-html" mode, where results may be returned as is, more easy way 
+</div>
+
+<div id="row_" class="hidden">
+	tag represent row of tabs inside tabbar<br>
+	there are may be many row tags 
+</div>
+
+<div id="tabbar_" class="hidden"> 
+	just top xml tag, has no special meaning
+	<h4>Optional attributes</h4>
+	<li>margin  - tabbar margin</li>
+	<li>align  - tabbar align </li>
+	<li>offset  - tabbar offset </li>
+	<li>skinColors  - colors of tabs</li>
+	<li>hrefmode  - mode of content loading</li>
+	<li>tabstyle  - used skin</li>
+</div>
+
+<div id="tabbar_margin" class="hidden">
+	attribute set the space between tabs <br>
+	 can be positive or negative integer <br>
+	if skipped - default skin's value used 
+</div>
+
+<div id="tabbar_align" class="hidden">
+	attribute set align of tab inside row  <br>
+	can be "right" or "left" for horizontal  tabbar<br>
+	"top" or "bottom" for vertical tabbar 
+</div>
+
+<div id="tabbar_offset" class="hidden">
+	attribute set the space between border of tabbar and first tab in it <br>
+	can be positive or negative integer<br>
+	if skipped - default skin's value used 
+</div>
+
+<div id="tabbar_hrefmode" class="hidden">
+	set dynamic tabbar mode<br>
+	can be :
+		<li>ajax</li>
+		<li>ajax-html</li>
+		<li>iframe</li>
+		<li>iframes</li>
+		<li>iframes-on-demand</li><br>
+	tabbar use static content loading by default
+</div>
+
+<div id="tabbar_tabstyle" class="hidden">
+	attribute set used skin
+	can be :
+	<li>silver</li>
+	<li>modern</li>
+	<li>winDflt</li>
+	<li>winScarf</li>
+	<li>winBiScarf</li>
+</div>
+
+<div id="tabbar_skinColors" class="hidden">
+	allows to set colors of tab elements in current skin <br>
+	supported only by winDflt skin
+</div>
+
+
+
+
+
+
+
+	
+<div>	
+	</div>
+	</body>
+</html>

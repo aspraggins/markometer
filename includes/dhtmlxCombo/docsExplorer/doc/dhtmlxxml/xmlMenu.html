@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>dhtmlxMenu XML</title>
+		<link rel="stylesheet" href="data.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<script src="data.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body id="xml_scheme" onload="init_first_scheme()">
+		<div id="informer">
+				<span id="start_me"  onclick="init_scheme('basic',this)">Basic</span>
+				<span onclick="init_scheme('full',this)">Full</span>
+				<span style="text-decoration: none; cursor: default; border: none;"><big><b>|</b></big></span>
+				<span onclick="init_scheme('plain',this)">Plain view (<small><img src="../../codebase/imgs/icon_html.gif" border="0" alt="" style="margin-bottom: -3px;"> html</small>)</span>
+				<span><a href="menu_xml.pdf" target="_blank">Plain view (<small><img src="../../codebase/imgs/icon_pdf.gif" border="0" alt="" style="margin-bottom: -3px;"> pdf</small>)</a></span>
+		</div>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" id="xml_1">
+			<tr><th width="50%"></th><th width="50%"></td></tr>
+		</table>
+		
+<textarea id="xml_full" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" encoding="iso-8859-1" ?> #encoding can be important 
+<menu mode="classic" menuAlign="left" maxItems="20" absolutePosition="yes" left="100" top="100" name="Demo menu" width="600px" height="20px" imageTextButtonCssClass="someCss" globalTextCss="someCss2" globalSecondCss="someCss3" globalCss="someCss4" withoutImages="0" mixedImages="1" type="a1"> # there is a lot of optional attributes, but you will not need them in most situations
+	<MenuItem name="File"id="main_file" width="120px" withoutImages="0" mixedImages="1" mode="popup" panelWidth="150px"> #some of global attributes can be redefined on sub-menu level
+			<MenuItem name="New" id="new"  src="programs.gif" src2="programs2.gif" imageSize="30px"/> #image customization
+			<divider id="div_1"/>	
+			<MenuItem name="Page Setup..." id="page" href="some.html" target="blank" />#auto-link functionality
+	</MenuItem>
+	<MenuItem name="Help" id="main_help" width="120px"  className="customCss1" textClassName="customCss2">#custom css styling
+			<MenuItem name="Index" width="120px" id="help_index" tooltip="some tooltip here"/>
+			<MenuItem name="About" id="help_about" disabled="true" disableImage="a_dis.gif"/>#disabled item
+	</MenuItem>
+	<MenuItem name="Dynamic" id="dynamic_one" submenu="some.php"/>#dynamically loaded sub-menu
+</menu>
+</textarea>
+
+
+<textarea id="xml_basic" rows="28" cols="120" style='display:none'>
+<?xml version='1.0' ?>
+<menu>
+	<MenuItem name="File"id="main_file" width="120px">
+			<MenuItem name="New" id="new"  src="programs.gif" />
+			<divider id="div_1"/>	
+			<MenuItem name="Page Setup..." id="page"/>
+	</MenuItem>
+	<MenuItem name="Help" id="main_help" width="120px"> 
+			<MenuItem name="Index" width="120px" id="help_index"/>	
+			<MenuItem name="About" id="help_about"/>			
+	</MenuItem>
+</menu>
+</textarea>
+		
+			
+<div id="ev_catcher">
+	
+<div id="menu_" class="hidden">
+	just top element of XML, can contain a LOT of attributes<br>
+	but in real life you most probably will not anything here<br>
+	<h4>Optional attributes</h4>
+	<li>mode - mode of submenu</li>
+	<li>menuAlign - align of menu items </li>
+	<li>maxItems - scrolling limit</li>
+	<li>absolutePosition - mode of menu positioning</li>
+	<li>left - absolute left position</li>
+	<li>top - absolute top position</li>
+	<li>name - label on menu bar</li>
+	<li>width - width of menu </li>
+	<li>height - height of menu </li>
+	<li>imageTextButtonCssClass - css for image of menu item</li>
+	<li>globalTextCss - css for text of menu item</li>
+	<li>globalSecondCss - css for menu item on second level</li>
+	<li>globalCss - css for menu item on first level</li>
+	<li>withoutImages - menu without images</li>
+	<li>mixedImages - menu with fixed images</li>
+	<li>type - type of visual styling</li>
+</div>	
+
+
+<div id="menu_mode" class="hidden">
+	mode of menu, there are for possible values, only two has practical sense
+	<li>classic</li>
+	<li>popup</li>
+	<li>alfa</li>
+	<li>betta</li>
+</div>
+<div id="menu_menuAlign" class="hidden">
+	align of menu items, inside menu<br>
+	<li>right</li>
+	<li>left</li>
+</div>
+<div id="menu_maxItems" class="hidden">
+	count of menu items after which submenu enable inner scroll 
+</div>
+<div id="menu_absolutePosition" class="hidden">
+	if this attribute present , menu postion will be changed to absolute<br>
+	( in 99.9% of cases you will NOT need it)
+</div>
+<div id="menu_top" class="hidden">
+	if absolute position enabled, this attribute can specify top coordinate of menu
+</div>
+<div id="menu_left" class="hidden">
+	if absolute position enabled, this attribute can specify left coordinate of menu
+</div>
+<div id="menu_name" class="hidden">
+	optional text on menu bar
+</div>
+<div id="menu_width" class="hidden">
+	width of menu bar ( optional, by default value from js command used )
+</div>
+<div id="menu_height" class="hidden">
+	height of menu bar ( optional, by default value from js command used )
+</div>
+<div id="menu_imageTextButtonCssClass" class="hidden">
+	css class which will be applied to image inside menu item
+</div>
+<div id="menu_globalTextCss" class="hidden">
+	css class which will be applied to text inside menu item
+</div>
+<div id="menu_globalSecondCss" class="hidden">
+	css which will be applied to menu items on second and next levels of menu
+</div>
+<div id="menu_globalCss" class="hidden">
+	css which will be applied to menu items on first level of menu
+</div>
+<div id="menu_withoutImages" class="hidden">
+	if attribute set - items in menu will be rendered without images
+</div>
+<div id="menu_mixedImages" class="hidden">
+	if attribute set - items in menu will be rendered with or without images ( in any case place for image will be preserved )
+</div>
+<div id="menu_type" class="hidden">
+	visual rendering type, mystic attribute, can have next values
+	<li>a1,a2,a3,b1,b2,b3</li>
+</div>
+
+
+
+
+<div id="divider_" class="hidden">
+	menu divider
+	<h4>Optional attributes</h4>
+	<li>id - item identificator</li>
+</div>
+
+<div id="divider_id" class="hidden">
+	item identificator, not really necessary ,<br> but can be used for manipulation by JS API
+</div>
+	
+<div id="MenuItem_" class="hidden">
+	tag represent item of menu hierarchy<br>
+	can contain multiple attributes, but only few of them really necessary, most are optional
+	<h4>Mandatory attributes</h4>
+	<li>id - identificator of menu item</li>
+	<h4 id="common_attributes">Common attributes</h4>
+	<li>name - label of menu item</li>
+	<li>src - source of image used inside menu item</li>
+	<li>href - url used in auto-link mode</li>
+	<h4 id="rare_used_attributes">Rare used attributes</h4>
+	<li>width - width of menu item</li>
+	<li>panelWidth - width of menu sub panel</li>
+	<li>mode - mode of sub-panel</li>
+	<li>withoutImages - menu without images</li>
+	<li>mixedImages - menu with fixed images</li>
+	<li>src2 - url of second image</li>
+	<li>imageSize - size of image </li>
+	<li>target - target of href</li>
+	<li>className - css class</li>
+	<li>textClassName - css class for text</li>
+	<li>tooltip - tooltip of item</li>
+	<li>disabled - item initially disabled</li>
+	<li>disableImage - src used for item image in disabled state</li>
+	<li>submenu - url for additional data fetching</li>
+</div>
+
+<div id="MenuItem_id" class="hidden">
+	id of menu item<br>
+	must be unique per menu
+</div>
+<div id="MenuItem_name" class="hidden">
+	label of menu item, can contain HTML tags
+</div>
+<div id="MenuItem_src" class="hidden">
+	url to image used inside menu item ( the image itself optional )
+</div>
+<div id="MenuItem_href" class="hidden">
+	menu can work in auto-link mode, <br>if "href" attribute present - selecting it will automatically open page defined by href attribute
+</div>
+<div id="MenuItem_width" class="hidden">
+	width of menu items ( in pixels )
+</div>
+<div id="MenuItem_panelWidth" class="hidden">
+	width of sub-items panel ( if any sub-items exist )
+</div>
+<div id="MenuItem_mode" class="hidden">
+	mode of sub-menu, effect equal to the same attribute of menu tag
+</div>
+<div id="MenuItem_withoutImages" class="hidden">
+	if attribute set - items in sub-menu will be rendered without images
+</div>
+<div id="MenuItem_mixedImages" class="hidden">
+	if attribute set - items in sub-menu will be rendered with or without images ( in any case place for image will be preserved )
+</div>
+<div id="MenuItem_src2" class="hidden">
+	one more mystic thing<br>
+	this attribute allows to second image url, in such case menu item will have two (!) images<br>
+	pretty unsure why it necessary
+</div>
+<div id="MenuItem_imageSize" class="hidden">
+	allows to set custom size of image inside menu item
+</div>
+<div id="MenuItem_target" class="hidden">
+	in auto-link mode, with attribute used to point how link must be opened<br>
+	_blank by default
+</div>
+<div id="MenuItem_className" class="hidden">
+	css class which will be applied to container of menu item
+</div>
+<div id="MenuItem_textClassName" class="hidden">
+	css class which will be applied to text of menu item
+</div>
+<div id="MenuItem_tooltip" class="hidden"> 
+	tooltip of item, the item label used by default
+</div>
+<div id="MenuItem_disabled" class="hidden">
+	if attribute exists, item will be rendered in disabled state ( can be enabled later, by js API )
+</div>
+<div id="MenuItem_disableImage" class="hidden">
+	in disabled state menu item change its css class , so it possible to define custom disabled effect, <br>
+	if it is not enough, it possible to define one more image which will be used in disabled state
+</div>
+<div id="MenuItem_submenu" class="hidden">
+	this attribute allow to organize dynamical loading of menu items, if it present, then on sub-menu opening<br>
+	request will be sent to server , to retrieve additional data<br>
+	value of attribute used as url of server side script, which must send additional data.	
+</div>
+
+
+
+
+	
+<div>	
+	</div>
+	</body>
+</html>

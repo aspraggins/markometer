@@ -1,0 +1,343 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>dhtmlxGrid XML</title>
+		<link rel="stylesheet" href="data.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<script src="data.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body id="xml_scheme" onload="init_first_scheme()">
+		<div id="informer">
+				<span id="start_me" onclick="init_scheme('basicD',this)">Basic data</span>
+				<span onclick="init_scheme('basicC',this)">Basic config</span>
+				<span onclick="init_scheme('advanced',this)">Advanced</span>
+				<span onclick="init_scheme('full',this)">Full</span>
+				<span style="text-decoration: none; cursor: default; border: none;"><big><b>|</b></big></span>
+				<span onclick="init_scheme('plain',this)">Plain view (<small><img src="../../codebase/imgs/icon_html.gif" border="0" alt="" style="margin-bottom: -3px;"> html</small>)</span>
+				<span><a href="grid_xml.pdf" target="_blank">Plain view (<small><img src="../../codebase/imgs/icon_pdf.gif" border="0" alt="" style="margin-bottom: -3px;"> pdf</small>)</a></span>
+		</div>
+		<!--<div style="width: 100%; height: 1px; border-bottom: 1px dashed #cecece;"></div>-->
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" id="xml_1">
+			<tr><th width="50%"></th><th width="50%"></td></tr>
+		</table>
+<textarea id="xml_full" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" encoding="iso-8859-1" ?> #encoding can be important 
+<rows pos="123"   total_count="2000">	
+	<head>			#optional header configuration
+		<column type="edn" width="150" sort="str" format="0.00"> 
+			Column label	
+		</column>
+		<column type="ro" width="150" sort="na" color="red"> 
+			One more label	
+		</column>
+		<column type="co" width="150" sort="na" id="last">Combo 
+			<option value="1">One</option>
+			<option value="2">Two</option>	
+			<option value="3">Three</option>
+		</column>
+		<settings>	#optional, only used for forcing percent based width
+			<colwidth>px</colwidth>
+			<splitat>2</splitat>
+		</settings>
+		<beforeInit>	
+			<call command="enableResizing">	
+				<param>false,false</param>	
+			</call>
+		</beforeInit>
+		<afterInit>	
+			<call command="attachHeader">	
+				<param>Label 2-1,Label 2-2</param>
+			</call>
+			<call command="attachFooter">	# there may be as many command calls as necessary
+				<param>Footer 1,Footer 2</param>
+			</call>
+		</afterInit>
+	</head>
+	<userdata name="some_1"></userdata> #global userdata
+	<row id="11">  
+		<userdata name="some_1">value_1</userdata> #row specific userdata
+		<cell> first column data </cell>
+		<cell> second column data </cell>
+	</row>
+	<row id="12" class="css1" bgColor="red" style="color:blue;"> 
+		<cell> first column data </cell>
+		<cell class="css2" style="font-weight:bold;"> second column data </cell>	
+	</row>
+	<row id="13" locked="true" > 
+		<cell colspan="2" rowspan="1"> first column data </cell> 
+		<cell></cell> 
+	</row>
+	<row id="14" selected="true" call="true"> 
+		<cell type="ro"> first column data </cell> 
+		<cell></cell>
+	</row>
+	<row id="15">
+		<cell><![CDATA[  
+			<input type='button'  value='any' /> 
+		 ]]></cell> 
+		<cell> second column data </cell>
+	</row>
+	<row id="16">
+		<cell> &amp;lt;input type='button'  value='any' /&amp;gt; </cell>	
+		<cell> second column data </cell>
+	</row>
+</rows>
+</textarea>
+
+
+<textarea id="xml_basicD" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" ?>
+<rows>	#top xml tag, mandatory
+	<row id="11">  #each row must have unique ID
+		<cell> first column data </cell>
+		<cell> second column data </cell>
+	</row>
+	<row id="12">
+		<cell><![CDATA[  
+			<input type='button'  value='any' /> #any hmtl can be stored inside CDATA
+		 ]]></cell> 
+		<cell> second column data </cell>
+	</row>
+	<row id="13">
+		<cell> &amp;lt;input type='button'  value='any' /&amp;gt; </cell>	#or it can be correctly escaped
+		<cell> second column data </cell>
+	</row>
+</rows>
+</textarea>
+
+
+<textarea id="xml_basicC" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" ?>
+<rows>	
+	<head>			
+		<column type="edn" width="150" sort="str" format="0.00"> #column defined as readonly , 150px width
+			Column label	#label of column
+		</column>
+		<column type="ro" width="150" sort="na" color="red"> #not sortable column
+			One more label	
+		</column>
+		<column type="co" width="150" sort="na" id="last">Combo #combobox column
+			<option value="1">One</option>
+			<option value="2">Two</option>	#values|labels of combobox values
+			<option value="3">Three</option>
+		</column>
+	</head>
+</rows>
+</textarea>
+
+<textarea id="xml_advanced" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" ?>
+<rows pos="123"   total_count="2000">	#smart rendering related attributes
+	<userdata name="some_1"></userdata> #global userdata
+	<row id="11">  
+		<userdata name="some_1">value_1</userdata> #row specific userdata
+		<cell> first column data </cell>
+		<cell> second column data </cell>
+	</row>
+	<row id="12" class="css1" bgColor="red" style="color:blue;"> #there are few ways to set styles of row
+		<cell> first column data </cell>
+		<cell class="css2" style="font-weight:bold;"> second column data </cell>	#same for cell 
+	</row>
+	<row id="13" locked="true" > #not editable row
+		<cell colspan="2" rowspan="1"> first column data </cell> #colspan in grid
+		<cell></cell> #the second cell included in colspan still present as empty tag
+	</row>
+	<row id="14" selected="true" call="true"> #auto-selected after data loading
+		<cell type="ro"> first column data </cell> #cell will be rendered as "ro" without relation to column type
+		<cell></cell>
+	</row>
+</rows>
+</textarea>
+		
+			
+<div id="ev_catcher">
+<div id="userdata_" class="hidden">
+	To store some additional data, which need not to be displayed, but may be useful for some client side operations - userdata sections can be used.
+</div>
+<div id="userdata_name" class="hidden">
+	Because there may be many userdata tags per row|grid, they differ by name attribute. Value of name attribute used on client side to get related value.
+</div>
+<div id="column_" class="hidden">
+	<h3>column</h3>
+	in case of configuration from XML it represent column of grid <br/> value of tag used as column label
+	<h4>Optional attributes</h4>
+	<li>type - type of column editor (ro,ed,co etc.)
+	<li>sort - type of sorting used for column (str,int,date)
+	<li>width - width of column ( set as pure integer, can be percents or pixels [default] )
+	<li>align - default align for current column
+	<li>id - ID of column, really optional parameter</li>
+	<li>color - color of column</li>
+	<li>format - format of data in column ( for specific excells only )</li>
+</div>	
+<div id="column_width" class="hidden">
+	Width of column in percents or pixels, need to be specified as pure int, without ending px<br/>
+	By default treated as width in pixels, can be switched to percents by using "setting/colwidth" tag
+</div>	
+<div id="column_type" class="hidden">
+	Default column type ( equal to setColTypes - ro,ed,co and etc. )
+</div>	
+<div id="column_align" class="hidden">
+	Horizontal align of column ( left, right, center ; equal to setColAlign )
+</div>	
+<div id="column_color" class="hidden">
+	Color of column ( equal to setColumnColor )
+</div>	
+<div id="column_sort" class="hidden">
+	Allows to set sorting type ( equal to setColSotring command - str,int,date)<br/>
+	If you need to set custom routine just set name of javascript function here which will be used for such task. ( Its name must have more than 4 chars )
+</div>	
+<div id="column_format" class="hidden">
+	For "edn" and "calendar" excells format can be specified ( equal to calling setNumberFormat or setDateFormat against related column )<br/>
+	Will not affect any other column types.
+</div>	
+<div id="column_id" class="hidden">
+	Each column has ID, it has sense when you are using movable columns and column index not consistent enough<br/>
+	While grid API uses indexes for all operations it provides API to convert IDs to indexes and back ( getColumnId, getColIndexById )
+</div>	
+
+<div id="settings_" class="hidden">
+	Group grid configuration settings, has no individual meaning
+</div>	
+<div id="colwidth_" class="hidden">
+	Allow to specify how treat column width specified in "column@width". 
+	Value of tag can be
+	<li>px - width will be set as pixels ( default value, tag may be skipped in such case )</li> 
+	<li>% - width will be set as percents</li> 
+</div>	
+<div id="splitat_" class="hidden">
+	Execute splitAt command in required position, functionality is kind of deprecated, and it recommended to use afterInit/call to initiate split
+</div>	
+<div id="option_" class="hidden">
+	Allow to define list of options for excell which can work with such conception ( co, coro, clist, in theory any custom excell which has inner combo property )<br/>
+	Content of tag used as option label<br/>
+	"value" attribute is mandatory
+</div>	
+<div id="option_value" class="hidden">
+	value for related option inside combobox
+</div>	
+
+
+
+		
+<div id="row_" class="hidden">
+	<h3>row</h3>
+	tag represent row of grid, one tag for each row
+	<h4>Mandatory attributes</h4>
+	<li>id - ID of row, must be unique per grid</li>
+	<h4>Optional attributes</h4>
+	<li>class - css class</li>
+	<li>style - css text</li>
+	<li>locked - force readonly mode</li>
+	<li>bgColor - background color</li>
+	<li>selected - pre-select row</li>
+	<li>call - extend selection</li>
+</div>
+
+<div id="row_id" class="hidden">
+	unique identificator, can be any combination of chars|numbers
+</div>
+<div id="row_class" class="hidden">
+	name of css class which will be attached to row
+</div>
+<div id="row_style" class="hidden">
+	string with css definitions, which will be set as style attribute of related row
+</div>
+<div id="row_locked" class="hidden">
+	row will be locked - switched to read-only state, can be reverted by JS API
+</div>
+<div id="row_selected" class="hidden">
+	after data loading, row will be pre-selected
+</div>
+<div id="row_selected" class="hidden">
+	has sense only with enabled "selected" attribute, if both attributes set to true - row will be selected and onSelectRow event will be called
+</div>
+<div id="row_bgColor" class="hidden">
+	the color of row, it is strongly recommended to use this parameter to set color of row ( all other ways will override selection colors )
+</div>
+
+<div id="head_" class="hidden">
+	<h3>head</h3>
+	optional tag, used for grouping configuration tags ( necessary only if you want to define configuration in XML )
+	<br/>
+	no attributes supported
+</div>
+
+<div id="rows_" class="hidden">
+	<h3>rows</h3>
+	just top xml tag, has no special meaning
+	<h4>Optional attributes</h4>
+	<li>pos - position from which xml must be inserted in existing dataset of grid, actual only for SRND mode</li>
+	<li>total_count - expected count of rows, can be useful only in dynamic SRND or dynamic paging modes</li>
+</div>
+
+<div id="rows_pos" class="hidden">
+	In case of dynamic smart rendering XML fetched from server by chunks, the "pos" attribute shows in which place of grid data from incoming XML must be inserted. <br/>
+	In most cases ( the exceptions are pretty specific ) this value will be equal to url parameter "posStart" ( which automatically added to all calls in SRND mode ) <br/>
+	Attribute has meaning only in SRND mode and will be ignored in any other.
+</div>
+
+<div id="rows_total_count" class="hidden">
+	Both dynamic paging and dynamic rendering modes require to specify maximum expected count of rows ( paging can work without such limit, but it will not show all available pages from the start in such case )<br/>
+	Because hardcoding count or rows in javascript code is rare possible, it can be specified directly in XML.<br/>
+	If value skipped in SRND mode - the total count set to size of incoming XML ( basically dynamic smart rendering switch to static smart rendering) </br>
+	If value skipped in paging mode - grid will request additional data from server until empty XML set will not be returned. </br>
+	Attribute has no meaning in non dynamic modes.
+</div>
+
+<div id="cell_" class="hidden"> 
+	<h3>cell</h3>
+	represent cell of grid, value of tag will be used as value of cell in grid
+	<h4>Optional attributes</h4>
+	<li>type - type of cell, will redefine default type for column</li>
+	<li>class - name of css class</li>
+	<li>style - css text</li>
+	<li>colspan - optional columns grouping</li>
+	<li>rowspan - optional rows grouping</li>
+	
+</div>
+<div id="cell_style" class="hidden">
+	css style string, value mapped to style attribute of HTML cell
+</div>
+<div id="cell_colspan" class="hidden">
+	few cells can be grouped in rowspan, please beware that other cells, which will be included in colspan still need to be present in XML<br/>
+	support of attribute must be enabled by API call
+</div>
+<div id="cell_rowspan" class="hidden">
+	few cells can be grouped in rowspan, feature is mutual exclusive with colspan ( cell can has colspan and rowspan in same time )<br/>
+	please beware that having multiple rowspan will slowdown grid<br/>
+	_rowspan.js extension required to activate feature
+</div>
+<div id="cell_type" class="hidden">
+	type of used cell defined per column ( setColTypes ), but each cell in grid can have independent settings, so even if you have editable column you can define specified cells as readonly or checkboxes or some other control, by using this attribute
+</div>
+<div id="cell_class" class="hidden">
+	css class which will be attached to cell
+</div>
+
+<div id="afterInit_" class="hidden">
+	group all command calls which will be executed after grid structure initialized
+	<br/> command from this block will be executed even if no data structure tags ( column ) defined in header
+</div>
+<div id="beforeInit_" class="hidden">
+	group all command calls which will be executed before grid structure initialized
+	<br/> command from this block will be executed <strong>only </strong> if full grid structure defined in XML ( column tags )
+</div>
+<div id="call_" class="hidden">
+	<h3>call</h3>
+	represent call of grid command, must be placed in <em>afterInit</em> or <em>beforeInit</em> section
+	<h4>Mandatory attributes</h4>
+	<li>command - name of grid method which will be called, parameters of method taken from nested <em>param</em> tags
+</div>
+<div id="call_command" class="hidden">
+	name of grid method which will be called.
+</div>
+<div id="param_" class="hidden">
+	represent parameter of method call, there must be as much param tags as necessary
+</div>
+
+
+	
+<div>	
+	</div>
+	</body>
+</html>

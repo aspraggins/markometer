@@ -1,0 +1,285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>DHTML Combobox guide and samples</title><link rel="STYLESHEET" type="text/css" href="common/styles.css">
+</head>
+   
+<body>
+<a name="combo_"><h2 onclick="openFull(this)">dhtmlxCombo Guide and Samples</h2>
+</a><div class="block">
+<!---  --->
+	
+	<a name="combo_mf"><h3>Main features</h3>
+	</a><div class="block">
+			<li>Multibrowser/Multiplatform support </li>
+			<li>Full controll with JavaScript API</li>
+			<li>Dynamic loading</li>
+			<li>XML support</li>
+			<li>Filtering mode</li> 
+			<li>Autocomplete mode</li>
+			<li>Editable mode</li>
+	</div>
+	
+	<a name="combo_browser"><a name="combo_"><h3>Supported browsers</h3
+	></a></a><div class="block">
+		<li>IE 5.5 and above</li>
+		<li>Mac OS X Safari</li>
+		<li>Mozilla 1.4 and above</li>
+		<li>FireFox 0.9 and above</li>
+		<li>Opera (Xml loading depends on browser version)</li>
+	</div>
+
+	<a name="combo_guide"><h3>Working with dhtmlxCombo</h3
+	></a><div class="block">
+	
+	<a name="combo_init"><h4>Initializing object</h4
+		></a><div class="block">
+		dhtmlxcombo can be initialized in a plenty of ways. The most simple is initialization from
+		existing selectbox control. All what need to be done
+		<ol>
+		<li>include necessary files</li>
+			<xmp>
+		<script src="../codebase/dhtmlxcommon.js"></script>
+		<script src="../codebase/dhtmlxcombo.js"></script>
+		<link rel="STYLESHEET" type="text/css" href="../codebase/dhtmlxcombo.css">
+			</xmp>
+		<li>set path to image folder ( or just copy image files to your app folder)</li>
+			<xmp>
+		<script>
+			window.dhx_globalImgPath="../codebase/imgs/";
+		</script>
+			</xmp>
+		<li>write native select box code</li>
+			<xmp>
+		<select style='width:200px;'  id="combo_zone1" name="alfa1">
+				<option value="1">a00</option>
+				<option value="2">a01</option>
+		</select>
+			</xmp>
+		<li>create dhtmlxcombo from select control</li>
+			<xmp>
+		<script>
+			var z=dhtmlXComboFromSelect("combo_zone1");
+		</script>
+			</xmp>
+			<ul>
+				<li type="square">combo_zone1 - id of select which need to be converted</li>
+			</ul>
+        </ol>
+		<!--- <a href="../samples/combo_init.html">Related sample</a> --->
+       	<br/><br/>
+
+		The second approach is to create a new combobox inside some html container.
+
+		<ol>
+		<li>include necessary files</li>
+			<xmp>
+		<script src="../codebase/dhtmlxcommon.js"></script>
+		<script src="../codebase/dhtmlxcombo.js"></script>
+		<link rel="STYLESHEET" type="text/css" href="../codebase/dhtmlxcombo.css">
+			</xmp>
+		<li>write any container code (DIV is most common) </li>
+			<xmp>
+		<div id="combo_zone2" style="width:200px; height:30px;"></div>
+			</xmp>
+		<li>create dhtmlxcombo in HTML container</li>
+			<xmp>
+		<script>
+			var z=new dhtmlXCombo("combo_zone2","alfa2",200);
+		</script>
+			</xmp>
+			<ul>
+				<li type="square">combo_zone2 - id of HTML container</li>
+				<li type="square">alfa2 - named used in form integration</li>
+				<li type="square">200 - width of combobox</li>
+				<li type="square">use 4th parameter in constructor if you need to include images in Combo ("image")</li>
+			</ul>
+        </ol>
+        <!--- <a href="../samples/combo_init.html">Related sample</a> --->
+
+	</div>
+
+	<a name="combo_adding_options"><h4>Adding options</h4
+		></a><div class="block">
+		Option can be added in next ways
+		<ol>
+			<li>By addOption command</li>
+			<xmp>
+				var z=new dhtmlXCombo("combo_zone3","alfa3",200);
+				z.addOption(value,label,css);
+			</xmp>
+			<ul>
+				<li type="square">value - value of option</li>
+				<li type="square">label - label of option</li>
+				<li type="square">css - css string attached to option, optional</li>
+			</ul>
+			It is possible to add few options at once
+			<xmp>
+				var z=new dhtmlXCombo("combo_zone3","alfa3",200);
+				z.addOption([[value,label,css],[value2,label2,css3],[value3,label3,css3]]);
+			</xmp>
+			<li>From XML file</li>
+			<xmp>
+				var z=new dhtmlXCombo("combo_zone3","alfa3",200);
+				z.loadXML("xml/data.xml");
+			</xmp>
+			Where XML is have next format
+			<xmp>
+				<?xml version="1.0" ?>
+				<complete>
+					<option value="1">one</option>
+					<option value="2">two</option>
+					<option value="3">three</option>
+					<option value="4">four</option>
+					<option value="5">five</option>
+					<option value="6">six</option>
+					<option value="7">seven</option>
+					<option value="8">eight</option>
+					<option value="9">nine</option>
+					<option value="10">ten</option>
+				</complete>
+			</xmp>
+			Possible attributes of &lt;option&gt; tag:<br>
+			<ul>
+			<li type="square">value - option value</li>
+			<li type="square">selected - if option selected</li>
+			<li type="square">img_src - icon url (also add 4th parameter to combobox constructor - "image")</li>
+			</ul>
+			<!--- <a href="../samples/xml/data.xml">Sample of XML file</a> &nbsp;&nbsp;||&nbsp;&nbsp;
+			<a href="../samples/xml/dhtmlxcombo.xsd">XML definition file</a> --->
+			<li>From autocomplete xml file</li>
+			<br/>
+			<a href="guide.html#filtering">Plese check "filtration" section for more details</a>
+			<li>From HTML in case of converting from existing select box</li>
+        	<br/>
+		</ol>
+		<!--- <a href="../samples/combo_init.html">Related sample</a> --->
+
+	</div>
+
+	<a name="combo_form"><h4>Integrating with FORM tag</h4
+		></a><div class="block">
+		dhtmlxcombo automatically integrates in surrounding FORM tag.
+		While submitting such form, there are two form wields will be sent to server side
+		<ul>
+			<li type="square">COMBONAME - value of combobox</li>
+			<li type="square">COMBONAME_new_value - true if value is text entered in combobox, false if value one of items from predefined list. of combobox</li>
+        <br/>
+		If combo will be initialized by next command
+		<xmp>
+			var z=new dhtmlXCombo("combo_zone3","alfa3",200);
+		</xmp>
+		server side script will receive fields with names "alfa3" and "alfa3_new_value"
+		</ul>
+		<!--- <a href="../samples/combo_save.html">Related sample (PHP required for showing server side results)</a> --->
+	</div>
+	
+	
+	<a name="combo_filtering"><h4>Filtering</h4
+		></a><div class="block">
+		dhtmlxcombo can work in filtering mode. In such mode the values in list filtered by current entered text in edit control.
+		<ul>
+		To enable filtration next command can be called
+		<xmp>
+			z.enableFilteringMode(true);
+		</xmp>
+		By default combobox uses options which already loaded in it, but it is possible to define the external script
+		which will be called for generating list of suggestion.
+		<xmp>
+			z.enableFilteringMode(true,"php/complete.php",cache);
+		</xmp>
+			<ul>
+			<li type="square">php/complete.php - path to script</li>
+			<li type="square">cache - true/false - enable/disable caching of script responses ( using "true" recommended )</li>
+			</ul>
+			In described situation, for each change of text in edit control the next url will be called
+			<div class="url">
+			&nbsp;&nbsp;php/complete.php?pos=0&mask=TEXT
+			</div>
+			<ul>
+				<li type="square">TEXT - current text in edit control</li>
+			</ul>
+			The combobox awaits that script response will be a XML in same format which used for initialization.<br/>
+			If you prefer - you can return only part of suggestion, combobox can automatically send additional request and add more data to list of options.
+		<xmp>
+			z.enableFilteringMode(true,"php/complete.php",cache,true);
+		</xmp>
+			The server side script will be called by url
+			<div class="url">
+			&nbsp;&nbsp;php/complete.php?pos=START&mask=TEXT
+			</div>
+			<ul>
+				<li type="square">START - position from which suggestion must be returned.</li>
+			</ul>
+			For all additional sub fetches returned XML must have "add" attribute of main tag
+			<xmp>
+			<?xml version="1.0" ?>
+			<complete add="true">
+				...
+			</xmp>
+		</ul>
+		<!--- <a href="../samples/combo_filter.html">Related sample (PHP required for dynamic autocomplete)</a> --->
+
+	</div>
+
+	<a name="combo_operation1"><h4>Operations with combobox</h4
+		></a><div class="block">
+		<ol>
+			<li>Show/Hide combo by <span class="command">combo.show(mode);</span></li>
+			<li>Enable/Disable <b><i>readonly</i></b> mode by <span class="command">combo.readonly(mode);</span></li>
+			<li>Enable/Disable <b><i>disabled</i></b> mode by <span class="command">combo.disable(mode);</span></li>
+		</ol>
+		<!--- <a href="../samples/combo_actions.html">Related sample</a> --->
+	</div>		
+	
+	<a name="combo_operation2"><h4>Operations with comobobox's options</h4
+		></a><div class="block">
+	<ol>
+			<li>Add option - <span class="command">combo.addOption(...);</span></li>
+			<li>Delete option - <span class="command">combo.deleteOption(value);</span></li>
+			<li>Update option - <span class="command">combo.updateOption(oldvalue,value,text,css);</span></li>
+			<li>Get selected value option - <span class="command">combo.getSelectedValue();</span></li>
+			<li>Get selected text - <span class="command">combo.getSelectedText();</span></li>
+			<li>Get text in combo edit  - <span class="command">combo.getComboText();</span></li>
+			<li>Set text in combo edit  - <span class="command">combo.setComboText();</span></li>
+			<li>Set width of options list  - <span class="command">combo.setOptionWidth(width);</span></li>
+			<li>Set height of options list  - <span class="command">combo.setOptionHeight(height);</span></li>
+			<li>Enable/Disable <b><i>automatic width</i></b> of options list - <span class="command">combo.enableOptionAutoWidth(mode);</span></li>
+			<li>Enable/Disable <b><i>automatic height</i></b> of options list  - <span class="command">combo.enableOptionAutoHeight(mode);</span></li>
+	</ol>
+
+		<!--- <a href="../samples/combo_api.html">Related sample</a> --->	
+	</div>
+	<a name="combo_groups"><h4>Groups extension</h4></a><div class="block">
+	Groups extension allows to organize groups of combos with parent-child dependence, when options of child combos are determined by the value of selected option in its parent.
+	<ul>
+	Method <b>attachChildCombo(child_combo,url)</b> defines a child combo and sets a path to a server-side script which generates a necessary xml. 
+	<xmp>
+		var z2=new dhtmlXCombo("combo_zone2","alfa2",200);
+				
+		var z=new dhtmlXCombo("combo_zone","alfa1",200);
+		z.enableFilteringMode(true);
+		z.attachChildCombo(z2,"combo2.php");
+		z.loadXML("combo1.xml");
+	</xmp>	
+	When some option is selected in the parent combo. The server-side  script ("combo2.php" in the example above) recieves the value of this option with the request; the name of this parameter is <b>"parent"</b>. Such a functionality allows to form xml stream depending on parent's value using any server-side language.     
+	<xmp>
+		combo2.php?parent=PARENT_VALUE
+	</xmp>  
+	Child combos can be set in the same container with their parent using <b>setAutoSubCombo(url,name)</b>. In this case, they inherit all methods and properties of the parent, except the server-side script and the name which are set in the setAutoSubCombo method.  
+	<xmp>
+		var z1=new dhtmlXCombo("combo_zone1","alfa1",200);
+	  	z1.enableFilteringMode(true);
+		z1.loadXML("combo1.xml")	
+		var z2 =  z1.setAutoSubCombo("combo2.php","alpha2")
+		var z3 =  z2.setAutoSubCombo("combo3.php","alpha3")
+	</xmp>
+</ul>
+		<!--- <a href="../samples/initialization/combo_groups.html">Related sample</a> --->	
+	</div>
+	</div>
+	</div>
+	
+	<div class="copyr">&copy; DHTMLX LTD.</div>
+</body>

@@ -1,0 +1,292 @@
+WysiwygPro 3.2.1 30 November 2009
+------------------------
+Bug Fixes:
+* Addresses PHP 5.3 compatibility issues
+
+
+WysiwygPro 3.2.0 23 November 2009
+------------------------
+Upgrading:
+* If you have created your own language pack you will need to add the following new vars:
+	New var in lang.inc.php:
+		$lang['editor']['inserthtml']
+	New file:
+		includes/wproCore_insertHTML.inc.php
+
+New features:
+* Added the defaultImageView property for setting whether the image manager should default to list or thumbnail view (set to 'list' for list view) (http://www.wysiwygpro.com/index.php?id=444)
+* Added a new plugin 'repeatingRegions' that allows you to create repeating regions similar to Dreamweaver (http://www.wysiwygpro.com/index.php?id=324)
+* Added maxImageDisplayWidth, maxImageDisplayHeight, maxMediaDisplayWidth, maxMediaDisplayHeight properties (http://www.wysiwygpro.com/index.php?id=446)
+* Added the START keyword to the htmlVersion property for allowing the start attribute on lists when using a strict doctype
+* Added insertHTML option to the context menu
+* Added a new JavaScript API method WPro.deleteAll() for removing all editors from the page
+
+Bug Fixes:
+* Fixed an issue where object or embed tags with unquoted attribute values would loose those attributes
+* Fixed an issue with context menus in Safari 4
+* Fixed an issue with spelling suggestions
+* Fixed an issue where some formatting options did not work in Safari
+* Fixed an issue with link previews displaying too small in IE 8
+* Fixed an issue in IE 8 where editing a link with no target attribute would add a target value of 'null'
+* Fixed an issue with linking to .com.xx domains
+* Fixed an issue where menus where wrongly positioned if displaying the editor within a scrollable element
+* Fixed compatibility issues with some 3rd party Ajax libraries including JQuery (http://www.wysiwygpro.com/index.php?id=445)
+* Fixed broken alphabetical ordering of color palettes on the color picker dialog
+* Fixed an issue where the paste from external source feature did not remove headers when pasting from MS Office into Firefox on OS X
+* Improved remembering of previously used colors, special characters and words
+
+
+WysiwygPro 3.1.2 25 May 2009
+------------------------
+New Features:
+* Support for more characters in file and folder names
+* Added a new JavaScript API method getSubmitValue that works the same as getValue but runs the result through any submit filters
+
+Bug Fixes
+* Fixed an issue where the spell checker would sometimes return broken html code
+* Fixed an issue where version 2 compatibility mode would not run
+* Fixed an issue where files could not be uploaded in Safari
+* Fixed an issue with parsing php code that contained a closing comment tag (-->)
+* Fixed an issue where attribute values such as "The selected product" would be changed to "The selected="selected" product"
+* Increased default memory_limit settings inline with PHP 5 defaults
+* Fixed an issue where _wpro_* attributes would be left in the source html
+* Fixed an issue where jsBookmarkLinks did not function correctly
+* Fixed an issue where using wproUtilities::removeTags to remove short tags such as <u> would also remove longer tags that begin the same such as <ul>
+* Fixed a JavaScript error with embedding media files when the JSEmbed plugin is enabled.
+* Fixed an issue in IE where the valign attribute would be set to center instead of middle
+* Fixed an issue where conditional comment tags and their contents were deleted in IE
+* Fixed an issue where downlevel revealed conditional tags would be changed into standard comment tags in Firefox
+
+
+WysiwygPro 3.1.1, 19 January 2009
+---------------------------------
+Upgrading:
+* If you have created custom themes you may need to adjust your styles for the view tabs. These are now button elements instead of anchor tags.
+
+New Features
+* Added the bodyClass attribute for setting a className for the body tag when in snippet mode
+
+Bug Fixes
+* Fixed an issue where the Show all option on the Flash properties dialog was not internationalized
+* Fixed an issue where wproAjax did not apply it's editorURL or route properties to the editor
+* Fixed an issue where browsers would not cache the dialog windows
+* Fixed an issue where the set_savebutton method would not allow a custom button to be set
+* Increased quality of thumbnails and edited JPEG images
+* Fixed issues with previewing links in the Insert/Edit Hyperlink dialog
+* Changed the view tabs from links to buttons to prevent issues with pages that use an onunload or onbeforeunload handler
+* Improved pasting from MS Word 2007 into Firefox 3
+* The fullscreen button on the FLV player now works (previously the editor did not add the required allowfullscreen parameter)
+* Fixed JavaScript errors when embedding or previewing FLV content in IE
+* Fixed an issue where toolbar buttons did not work in Google Chrome
+* Fixed an issue in Firefox where inserting a snippet or pasting external content would result in the first paragraph being moved to the end of the content
+* Fixed an issue where an editor could not be named 'default'
+* Fixed an issue in IE where the closing </embed> tag would get repeated
+* Fixed an issue in IE where the Edit Media Object dialog would hang when loading embed tags
+* Fixed an issue in IE where using the JavaScript form.submit() method would not update the editor content
+* Fixed an issue where the alt attribute on images would not change when edited
+* Fixed an issue where the spellchecker could not handle words containing characters above 128
+
+Other
+* Updated the FLV player
+
+
+WysiwygPro 3.1.0, 23 July 2008
+------------------------------
+Upgrading:
+* If you have created your own language pack you will need to add the following new vars:
+	New vars in lang.inc.php:
+		$lang['editor']['unlink']
+	New vars in includes/wproCore_codeCleanup.inc.php: 
+		$lang['wproCore_codeCleanup']['removeAnchors']
+	New vars in includes/wproCore_fileBrowser.inc.php: 
+		$lang['wproCore_fileBrowser']['flashVars']
+		$lang['wproCore_fileBrowser']['youtube']
+		$lang['wproCore_fileBrowser']['youtubeHelp']
+		$lang['wproCore_fileBrowser']['flvPlayer']
+		$lang['wproCore_fileBrowser']['showPlaylist']
+		$lang['files']['mp3']
+		$lang['files']['asx']
+		$lang['files']['wpl']
+		$lang['files']['xspf']
+		
+* If you have created your own theme you will need to add the following new images:
+	 icons/mp3.gif
+	 buttons/unlink.gif
+	 
+* There are also a number of new default values in the following files:
+	conf/defaultValues/wproCore_codeCleanup.inc.php
+	conf/defaultValues/wproCore_fileBrowser.inc.php
+
+New Features:
+* Full support for Apple Safari 3.0 and above (and possibly other browsers based on Apple WebKit build 522 and above)
+* You can now double click on an image or media object to edit it's properties
+* New built in FLV player
+* The media browser now supports .mp3, .mp4, .flv and .h264 files for playback using the new built in FLV Player
+* The media browser now supports .xspf playlists for playback using the new built in FLV Player. All formats supported by Flash including .mp3, .mp4, .flv, .h264, .jpg and .gif are supported
+* The media browser now supports .asx and .wpl playlists for playback in Windows Media Player
+* The media browser now supports .wma, .asf, .wax, .wvx file extensions for Windows Media
+* The media browser now allows you to insert You Tube video
+* The media browser now supports the flashvars parameter for Flash media
+* Added a third parameter to the templateFilter assign function to specify whether a variable should be replaced in both design and preview (true) or only in preview (false)
+* Added a new method registerTextButton to the wysiwygPro class for adding text buttons to the toolbar
+* Added a Remove Link button. This appears in the context menu by default and can be added to the toolbar using the $editor->addRegisteredButton method. It is also available from the Insert/Edit Hyperlink dialog.
+* Added an option to the code and paste cleanup dialogs for removing named anchors
+* Added the new jsBookmarkLinks parameter to fix issues with bookmark links within pages that have a base tag
+
+Bug Fixes:
+* Fixed an issue where wproUtilities::cutHTML would always append '...' even if the string did not need to be cut.
+* wproUtliities::cutHTML will no-longer cut in the middle of a word or in the middle of a character entity reference
+* Fixed an 'undefined variable' error that showed in error logs
+* $editor->route can now be used in frameworks such as CodeIgniter that delete the $_GET vars
+* Fixed an issue with scaling an image or media object inline in IE where the dimensions were applied using a style attribute but the width and height attributes were left unchanged
+* Fixed an issue where the image properties editor would not load the image dimensions if they were set using a style attribute
+* Improved syntax highlighting of character entity references
+* wproUtilities::longWordBreak will no-longer break in the middle of a character entity reference
+* wproUtilities::closeTags will now always close tags in the order they were opened
+* Compatibility fixes for applications that also use the xAjax library
+* The default settings when choosing unsupported media in the media browser should now work in the majority of cases
+* Fixed an issue where if an element in the form containing the editor was named 'submit' the editor would die
+* Improved the routine for auto-setting the editorURL
+* Fixed an issue where the editor would not recognise embed tags with no closing tag
+* Fixed an issue where the media properties editor would not recognise params with uppercase names
+* Fixed an error on the snippets dialog
+* Fixed an issue where setting the $defaultValues['target'] option in core/defaultValues/wproCore_fileBrowser.inc.php had no effect
+* Fixed an issue where the editor would convert align="center" to align="middle" on TD and TH tags
+* Fixed a JavaScript error in Firefox when using the setValue method
+* Fixed an issue that prevented links that open in a new window from being changed to open in the same window when editing an XHTML strict document
+* Fixed an issue with file management on sites located inside a folder whose name starts with a period
+* Fixed an issue when PHP is configured with no memory limit
+* Fixed an issue where the file browser would fail to move thumbnails when moving files
+* Fixed an issue where menus were not positioned correctly if the editor was displayed within a tag with style set to overflow:scroll
+* Fixed an issue where the move/copy dialog would not allow you to select anything other than the default directory in the sidebar
+* Fixed an issue with removing the 'linkmanager' feature
+* Improved removal of XML tags and attributes in the paste and code cleanup dialogs
+* Fixed issues with inserting and editing the properties of images with no width or height attributes
+* Fixed an issue with inserting columns before the first column in a table
+* Fixed some issues with undo/redo
+* Fixed an issue where inserting a table into a paragraph would nest the table within the paragraph which is invalid HTML
+* Fixed an issue with the Snippets dialog not functioning correctly in IE 6
+* Fixed an issue with nested folders on the Snippets dialog
+* Improved nesting of inline tags, font, span etc
+* Fixed an issue in IE where alignment was not populated on the image and table properties dialogs when editing a strict document type
+* Fixed an issue where the editor content would scroll to the top in IE 6
+* Fixed an issue in IE where unavailable table editing options were not disabled when a table was selected
+* Fixed an issue were the editor would leave an attribute called _wpro_href on base tags
+* Fixed an issue that caused some documents to have two doctype declarations
+* Fixed an issue where the editor would add alt attributes to object tags
+* Fixed an error in IE 7 when editing or inserting an invalid link
+* Fixed an issue where the Bullets and Numbering dialog would incorrectly add a start attribute to UL tags
+* Fixed some display issues in Firefox 3
+* Suppressed "headers already sent" error message
+* Fixed an issue with escaping of special characters in object and embed tags
+
+
+WysiwygPro 3.0.3, 3 March 2008
+------------------------------
+Upgrading:
+If you have created your own language pack there is a new var $lang['editor']['selectall'] that needs to be added to lang.inc.php
+If you are submitting the form containing the editor using the javascript form.submit() method you no-longer need to update WysiwygPro first
+
+New Features:
+* Added a new boolean parameter to wproUtilities::emailEncode to control whether the function should encode only email links (true, default) or all email addresses (false)
+* Added 'Select All' to the context menu
+* Added the emptyValue parameter to allow developers to set the default value of an editor should the content be empty (By default this is <p>&nbsp;</p> or <div>&nbsp;</div> depending on the lineReturns parameter)
+
+Bug Fixes:
+* Fixed a conflict when using route in an application that also includes the xAjax, GetID3 or DOMMIT libraries
+* Fixed an issue where unknown file types would have the text '##file##' in the file type description
+* Fixed an issue in IE where opening the paste from external source dialog without first clicking on the editor would result in an error
+* Fixed an issue where wproUtilities::closeTags did not close heading tags
+* Fixed an issue where wproUtilities::emailEncode did not correctly handle email links containing subject and body attributes
+* Fixed an issue where the templateFilter plugin would not preserve < or >
+* Fixed an isse where the context menu did not function in source view when using a non english language pack
+* Fixed an issue on the table editor dialog where the border collpase and spacing between cells options did not behave the same way as they do on the new table dialog
+* Fixed an issue where styles were not applied to <div> tags in Firefox
+* Fixed an issue in Firefox where the contents of <noembed> tags was treated as text rather than HTML
+* The templateFilter plugin can now be used to preserve complex smarty tags
+* Support for units other than px on image and media margins
+* Fixed an issue where image icons in the styles menu were broken when setting the baseURL to a different domain
+* Fixed an issue where the spellchecker would not function with open_basedir
+* Fixed intermittent errors in IE 6
+* Fixed an issue where textarea tags were not correctly colored in source view
+* Fixed an issue where anchor links would be broken if the editor was displayed on a page that has a query string in the URL
+* Fixed an issue where if you set a stylesheet and the document being edited had the same stylesheet in it's head tags then that stylesheet would be removed
+* Fixed an issue with the JSEmbed plugin where the link to the wproObject.js file did not respect the urlFormat setting
+* Fixed an issue where code placed outside of acceptable HTML regions would be deleted
+* Fixed an issue where the editor would not auto update if the form was submitted using the JavaScript form.submit() method
+* Fixed an issue were PHP and ASP code would sometimes be converted to lowercase in Firefox
+* Fixed an 'Undefined offset' PHP error when running under localhost
+* Fixed compatibility with PHP scripts using an __autoload function
+* Fixed an error that prevented the editor from saving when it was loaded into a hidden div tag
+* Fixed an issue where pasting HTML with attributes quoted by single quotes into source view and then switching to preview would cause those attributes to be quoted by both single and double quotes
+
+
+WysiwygPro 3.0.2, 30 November 2007
+----------------------------------
+Upgrading:
+If you have modified config.inc.php please note that there is now an additional define you will need to add: WPRO_AJAX_METHOD
+There are also 2 new keys in conf/defaultValues/wproCore_fileBrowser.inc.php called flashBGColor and flashWMode
+
+All Changes:
+* Added the 'Jump to page...' menu to the paging menu in the file browser
+* Fixed an issue where files were not selected in paged folders after uploading or other file management proceedures
+* Fixed an issue with &nbsp; being left inside empty anchor tags
+* Fixed an issue with fullWindow mode not allowing for displayAbove and displayBelow
+* Fixed an issue with the paste from external source dialog repeating lines
+* Compatibility fixes for some PHP versions and distributions
+* Fixed rendering issues in Firefox with some document types
+* Fixed issues with editing table borders, background images and captions when editing a strict document type 
+* Fixed issues with table guidelines not displaying in Firefox
+* Fixed an issue with backspacing through HR tags
+* Removed the resize select list and tidied up error messages when uploading images and GD is unavailable
+* Removed the thumbnail/list view buttons when GD is unavailable
+* URL formatting enhancements
+* Fixed issues with inserting Media in Internet Explorer when editing a strict document type
+* Added the route paramater for routing WysiwygPro dialogs and other requests through an external script
+* Compatibility fixes for some third party session handlers
+* Fixed an issue where the Please Wait... message was often positioned wrongly while loading
+* Fixed an issue with adding a link to an image in Internet Explorer
+* Fixed an issue with setting the editor height to a small value
+* Fixed an issue with stylesheets not loading in preview mode in Firefox when editing a full document
+* Fixed an issue with multiple instances where the context menus would remain open
+* Fixed an issue with AJAX responses with certain charsets
+* Fixed an issue with deleting rows in a table that has a thead tag
+* Added the constrain proportions option to the image properties editor
+* Internal reworking to reduce memory usage and improve performance
+* Fixed an issue where the imageDir, documentDir and mediaDir paths could not contain ../
+* Fixed an issue where the imageDir, documentDir and mediaDir paths could not begin with // or \\
+* Fixed an issue where the file browser would allow the (attempted) creation of folders with a slash in the folder name
+* Fixed an issue with inserting files when there is only one file in the directory
+* Updated the XAJAX library to version 0.2.5 (bug fixes, performance improvements and XSS vulnerability fixes)
+* Added AJAX support for IE 6 with ActiveX disabled
+* Fixed an issue where selecting a context menu item in the file browser using IE 6 would open a new window
+* Fixed an issue where the paste box on the Paste From External Source dialog was not focused in IE
+* Fixed an issue with moving or copying files where the file browser would not overwrite selected files
+* Added the WPRO_AJAX_METHOD define to config.inc.php. This allows developers to change how AJAX requests should be made.
+* Added thumbnail caching for larger images
+* Added an option for setting the background color of Flash media
+* Added an option for setting the WMODE for Flash media
+* Fixed an issue with attribute values that end in an equal (=) sign
+* Fixed a display issue when WysiwygPro is displayed in the default Joomla 1.5 template
+
+
+WysiwygPro 3.0.1, 18 October 2007
+---------------------------------
+* Added the urlFormat property for more fine grained control over URL formatting such as forcing relative URLs
+* Compatibility fixes for some PHP versions and distributions
+* Compatibility fixes for safe_mode
+* Compatibility with short_open_tag
+* Fixed AJAX permission errors
+* Fixed an error in IE where inserting a link did not always insert the icon and file size
+* Fixes for selecting files and folders
+* Fixed an issue where an image's thumbnail was not moved or copied when the master image was moved or copied
+* Improved handling of memory limit issues in the Image Editor
+* Fixed issues with turning off WPRO_GZIP
+* Fixed issues with code clean up
+
+
+WysiwygPro 3.0, 5 October 2007
+------------------------------
+Initial Version 3 Release.
+
+(c) Copyright Chris Bolt and ViziMetrics Inc.

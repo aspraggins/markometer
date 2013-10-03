@@ -1,0 +1,41 @@
+<!-- End of Content -->
+</div>
+
+<div id="Menu">
+<a href="/" title="Home Page">Home |</a>
+<?php # footer.html
+//Display links based upon the login status:
+if (isset($_SESSION['id'])) {
+    echo '<a href="/logout/" title="Logout">Logout</a><br /><br />';
+    if($_SESSION['role']=='A' || $_SESSION['role']=='M' || $_SESSION['role']=='O') {
+      echo '<a href="/create/" title="Create">Create</a><br /><br />' . 				
+      '<a href="/manage/" title="Manage">Manage</a><br /><br />';				
+    }
+    echo '<a href="/track/campaigns/" title="Track">Track</a><br /><br />	
+    <a href="/leads/" title="Leads">Leads</a><br /><br />	
+    <a href="/settings/" title="My Settings">Settings</a>	
+    ';
+} else {
+    //Not logged in
+    echo '<a href="/register/" title="Register for the Site">Register</a><br />
+    <a href="/login/" title="Login">Login</a><br />
+    ';
+}
+?>
+</div>
+</body>
+</html>
+<?php //Flush the buffered output
+ob_end_flush();
+?>
+
+<!-- original menu code for action page and new form pages: 
+campaign was under /campaign/start/
+<a href="/action/standalone/" title="Create Action Page">Action Page</a><br />		
+<a href="/jotform/popupNewform.php?action=standalone" title="Create Form">Form</a><br />		
+-->
+
+<!--	<b>Manage:</b><br />
+    <a href="/campaign/manage/" title="Manage Campaigns">Campaigns</a><br />		
+    <a href="/action/edit/" title="Manage Action Pages">Action Pages</a><br />			
+    <a href="/manage/forms/" title="Manage Forms">Forms</a><br /><br /> -->

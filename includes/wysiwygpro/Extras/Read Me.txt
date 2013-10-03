@@ -1,0 +1,14 @@
+**Domit Modules**
+
+Domit is a library used to parse XML data. Modules not used by the default WysiwygPro installation 
+have been removed and placed here. Domit is located at wysiwygPro/core/libs/domit/
+
+**Getid3 Modules**
+
+Contains additional modules for Getid3. Getid3 is located at wysiwygPro/core/libs/getid3/
+Getid3 is a library that is used by WysiwygPro to determine the correct dimensions for video, flash 
+and other media and to determine the required flash player version for swf files.
+To keep the size of WysiwygPro down modules not used by the default WysiwygPro installation have
+been removed and placed in this folder.
+You can add these additional modules to Getid3 so that it can understand these file types by simply 
+copying them to the getid3 folder.

@@ -1,0 +1,11 @@
+<p>Since you're an administrator, you get a slightly different view of the people page than a normal user.</p>
+<p>Here you can Add a New User to the system by clicking the "Add a New User" button at the top of the page, or you can edit people who are already in the system simply by clicking on their name in the table. Click on a table heading to sort by that category.</p>
+<p>If you want to email a user we've conveniently included their email address so you can just click on it and type a note to them.</p>
+<br />
+<div class="modal-link">
+	<div class="modal-link-holder">
+		<div class="modal-link-frame">
+			<a class="btn" href="#" onclick="Modalbox.hide()"><span>Close &gt;</span></a>
+		</div>
+	</div>
+</div>

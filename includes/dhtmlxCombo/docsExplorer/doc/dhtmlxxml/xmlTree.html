@@ -1,0 +1,308 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>dhtmlxTree XML</title>
+		<link rel="stylesheet" href="data.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<script src="data.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body id="xml_scheme" onload="init_first_scheme()">
+		<div id="informer">
+				<span id="start_me" onclick="init_scheme('basicD',this)">Basic</span>
+				<span onclick="init_scheme('advanced',this)">Advanced</span>
+				<span onclick="init_scheme('full',this)">Full</span>
+				<span style="text-decoration: none; cursor: default; border: none;"><big><b>|</b></big></span>
+				<span onclick="init_scheme('plain',this)">Plain view (<small><img src="../../codebase/imgs/icon_html.gif" border="0" alt="" style="margin-bottom: -3px;"> html</small>)</span>
+				<span><a href="tree_xml.pdf" target="_blank">Plain view (<small><img src="../../codebase/imgs/icon_pdf.gif" border="0" alt="" style="margin-bottom: -3px;"> pdf</small>)</a></span>
+		</div>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" id="xml_1">
+			<tr><th width="50%"></th><th width="50%"></td></tr>
+		</table>
+<textarea id="xml_full" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" encoding="iso-8859-1" ?> #encoding can be important 
+<tree id="0" radio="0" order="asc">	
+	<item id="p1" text="parent item 1" select="1" call="1">	 # pre-selected on load
+		<userdata name="some1">value1</userdata>
+		<item id="c1-0" text="child item 1"/>
+		<item id="c1-1" text="child item 2"/>
+	</item>
+	<item id="p2" text="parent item 1" open="1"> #open on load	
+		<userdata name="some1">value2</userdata>
+		<item id="c2-0" text="child item 1" im0="a1.gif" im1="a2.gif" im2="a3.gif"/>	#with custom images
+		<item id="c2-1" text="child item 2" tooltip="some tooltip here"/> 
+	</item>
+	<item id="p3">	#if you have some complex data as item text
+		<itemtext>	# <em>itemtext</em> tag can be used 
+			Some text here
+		</itemtext>
+	</item>
+	<item id="p4" top="1">
+		<itemtext><![CDATA[  # by using CDATA 
+			any <strong>HTML</strong> #you can set any html here
+		]]></itemtext>
+	</item>
+	<item id="p5" text="&lt;em&lt;text&lt;/em&gt;">	# HTML also can be used inside text attribute
+	</item>	
+	<item id="p6" text="Checkbox related">
+		<item id="p6-1" text="some text" radio="1" />	# item has radio instead of checkbox
+		<item id="p6-2" text="some text" nocheckbox="1" />	# item has not checkbox at all
+		<item id="p6-a" text="some text" disabled="1" />	# item has disabled checkbox
+		<item id="p6-b" text="child item 1" checked="1"/>	# checked item
+		<item id="p-6c" text="child item 2" checked="-1"/>  # half-checked item		
+	</item>	
+	<item id="p7" text="some text here" child="1" />	# item has not loaded childs
+	<item id="p8" text="some text" aCol="red" sCol="green" />	# item with custom colors 
+	<item id="p9" text="some text" style="font-weight:bold" />	# item with bold text
+	<item id="p10" text="some text" closeable="0" />	# item can't be closed
+	<item id="p11" text="some text" topoffset="30" />	# item with custom vertical offset
+	<item id="p12" text="some text" locked="1" />	# item will not be accessible 
+	<item id="p13" text="some text" imwidth="30" imheight="25"/>	# item will image of custom size
+</tree>
+</textarea>
+
+
+<textarea id="xml_basicD" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" ?>
+<tree id="0">	#top xml tag, mandatory
+	<item id="p1" text="parent item 1">	#each item represented by <em>item</em> tag
+		<item id="c1-0" text="child item 1" />	
+		<item id="c1-1" text="child item 2" /> #parent-child relation defined by structure
+	</item>
+	<item id="p2" text="parent item 1" /> 	#text - caption of tree item
+</tree>
+</textarea>
+
+<textarea id="xml_basicP" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" ?>
+<tree id="0">	
+	<item id="p1" text="parent item 1">	
+		<pathstart id=" path1" /> #start of path 1
+		<pathstart id=" path2" color="red" mode="solid" width="2"/> #start of path 2
+		<item id="c1-0" text="child item 1" />	
+		<item id="c1-1" text="child item 2" /> 
+		<item id="c12" text="parent item 1">	
+			<item id="c121" text="child item 1" />	
+			<item id="c122" text="child item 2" /> 
+			<item id="c123" text="parent item 1">	
+					<item id="c1231" text="child item 1" />	
+					<item id="c1232" text="child item 2" > 
+						<pathend id="path1" /> #end of path 1
+					</item>
+			</item>
+		</item>
+	</item>
+	<item id="p2" text="parent item 1" > 	
+		<pathend id="path2" /> #end of path 2
+	</item>
+</tree>
+</textarea>
+
+
+<textarea id="xml_advanced" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" ?>
+<tree id="0">	#top xml tag, mandatory
+	<item id="p1" text="parent item 1" select="1" call="1">	 # pre-selected on load
+		<userdata name="some1">value1</userdata>
+		<item id="c1-0" text="child item 1"/>
+		<item id="c1-1" text="child item 2"/>
+	</item>
+	<item id="p2" text="parent item 1" open="1"> #open on load	
+		<userdata name="some1">value2</userdata>
+		<item id="c2-0" text="child item 1" im0="a1.gif" im1="a2.gif" im2="a3.gif"/>	#with custom images
+		<item id="c2-1" text="child item 2" tooltip="some tooltip here"/> 
+	</item>
+	<item id="p3">	#if you have some complex data as item text
+		<itemtext>	# <em>itemtext</em> tag can be used 
+			Some text here
+		</itemtext>
+	</item>
+	<item id="p4" top="1">
+		<itemtext><![CDATA[  # by using CDATA 
+			any <strong>HTML</strong> #you can set any html here
+		]]></itemtext>
+	</item>
+	<item id="p5" text="&amp;lt;em&amp;gt;text&amp;lt;/em&amp;gt;">	# HTML also can be used inside text attribute
+	</item>	
+</tree>
+</textarea>
+		
+			
+<div id="ev_catcher">
+<div id="userdata_" class="hidden">
+	To store some additional data, which need not to be displayed, but may be useful for some client side operations - userdata sections can be used.
+</div>
+<div id="userdata_name" class="hidden">
+	Because there may be many userdata tags per item, they differ by name attribute. Value of name attribute used on client side to get related tag content.
+</div>
+
+
+<div id="pathstart_" class="hidden">
+	tag represent start point of path route 
+	<h4>Mandatory attributes</h4>
+	<li>id - id of path, must has pathend tag with equal value</li>
+	<h4>Optional attributes</h4>
+	<li>color - color of route line</li>
+	<li>mode - used line type</li>
+	<li>width - width of route line</li>
+</div>
+
+<div id="pathend_" class="hidden">
+	tag represent start end of path route 
+	<h4>Mandatory attributes</h4>
+	<li>id - id of path</li>
+</div>
+
+<div id="pathend_id" class="hidden">
+	id of path , <br>must has pathend tag with equal value<br>must be unique per tree
+</div>
+<div id="pathstart_id" class="hidden">
+	id of path , <br>must has pathstart tag with equal value<br>must be unique per tree
+</div>
+
+<div id="pathstart_color" class="hidden">
+	Color of line
+</div>
+
+<div id="pathstart_width" class="hidden">
+	Width of line,<br> integer expected
+</div>
+
+<div id="pathstart_mode" class="hidden">
+	Mode of line : solid, dashed, etc ( any value of css "border-type" can be used )
+</div>
+		
+<div id="tree_" class="hidden">
+	<h3>tree</h3>
+	tag represent the whole tree, or some branch inside it
+	<h4>Mandatory attributes</h4>
+	<li>id - id of related parent element</li>
+	<h4>Optional attributes</h4>
+	<li>radio - switch checkboxes to radios for all tree</li>
+	<li>order - sort items after loading</li>
+</div>
+
+<div id="tree_id" class="hidden">
+	id of related parent element<br>by default tree has global root item with ID = 0, it can be redefined inside tree constructor<br>
+	in case of dynamical loading attribute must point to related parent ID 
+</div>
+<div id="tree_radio" class="hidden">
+	if checkboxes enabled in tree, and such attribute present in XML - all checkboxes it tree will be replaced with radio buttons ( with appropriate change in checking logic )
+</div>
+<div id="tree_order" class="hidden">
+	if attribute present , the sorting functionality will be called on load ( separate extension! )<br>
+	none - ignored<br>
+	1 - ascendant sorting<br>
+	other value - descedent sorting<br>
+</div>
+
+
+<div id="item_" class="hidden">
+	<h3>item</h3>
+	tag represent element of tree, the result tree will have same hierarchy as tags in XML
+	<h4>Mandatory attributes</h4>
+	<li>id - id of element</li>
+	<h4>Optional attributes</h4>
+	<li>text - label of item</li>
+	<li>tooltip - tooltip of item</li>
+	<li>im0,im1,im2  - custom images</li>
+	<li>imwidth, imheight - size of image</li>
+	<li>style - css text</li>
+	<li>topoffset - vertical space</li>
+	<li>checked - state of checkbox</li>
+	<li>radio - radio button flag</li>
+	<li>nocheckbox - remove checkbox from item</li>
+	<li>disabled - disable related checkbox</li>
+	<li>selected - item will be selected</li>	
+	<li>call - onSelect action will be called on load</li>
+	<li>child - not loaded child mark</li>
+	<li>aCol,sCol - colors of item</li>
+	<li>closeable - allows|deny closing of item</li>
+	<li>locked - block any actions against item</li>
+</div>
+<div id="item_id" class="hidden">
+	identificator of item<br> 
+	must be unique per tree<br>
+	can contain any combination of chars|letters
+</div>
+<div id="item_text" class="hidden">
+	label which will be rendered on page, text by default, but can contain any combination of HTML tags if them correctly escaped<br>
+	if attribute skipped - label can be set by itemtext tag
+</div>
+<div id="item_tooltip" class="hidden">
+	tooltip text used by value ( need to be enabled by JS api )<br>
+	if missed - item text used as tooltip
+</div>
+<div id="item_im0" class="hidden">
+	Image of item - "leaf item" ( 18x18px by default ), if missed default image from applied skin will be used
+</div>
+<div id="item_im1" class="hidden">
+	Image of item - "folder in open state" ( 18x18px by default ), if missed default image from applied skin will be used
+</div>
+<div id="item_im2" class="hidden">
+	Image of item - "folder in closed state" ( 18x18px by default ), if missed default image from applied skin will be used
+</div>
+<div id="item_imwidth" class="hidden">
+	set width of image for current item <br> expect integer value<br>if you need to set new size for all tree - you can use JS API
+</div>
+<div id="item_imheight" class="hidden">
+	set height of image for current item <br> expect integer value<br>if you need to set new size for all tree - you can use JS API
+</div>
+<div id="item_style" class="hidden">
+	any css text here, it will be applied to label of item
+</div>
+<div id="item_topoffset" class="hidden">
+	allow to set custom space size between current item and previous one<br>
+	it allow to separate solid tree in few visual groups<br>
+	component expect that value will be integer ( size in pixels )
+</div>
+<div id="item_checked" class="hidden">
+	if checkboxes enable in tree, based on attribute value checkbox state will be set<br>
+	<li>0 or absent -  unchecked</li>
+	<li>1 - checked</li>
+	<li>-1 - third state ( for 3-state checkboxes )</li>
+</div>
+<div id="item_radio" class="hidden">
+	if checkboxes enabled then checkbox for item in question will be converted to radio button
+</div>
+<div id="item_nocheckbox" class="hidden">
+	even if checkboxes enabled, item with such attribute will not have checkbox<br>
+	if you not using checkboxes - attribute not necessary
+</div>
+<div id="item_selected" class="hidden">
+	after loading item with such attribute will be preselected
+</div>
+<div id="item_disabled" class="hidden">
+	if checkboxes used, item will have disabled checkbox
+</div>
+<div id="item_call" class="hidden">
+	after loading, onSelect handler will be called for item in question<br>
+	independent form selection in tree
+</div>
+<div id="item_child" class="hidden"> 
+	attribute has sense only for dynamical loading<br>
+	in case of dynamical loading - it state that item has sub-items which need to be loaded<br>
+	tree expect that attribute will have value  > 0 ( specifying exact value of sub-items not necessary, but can be useful in some scenarios )
+</div>
+<div id="item_aCol" class="hidden">
+	item text in normal state
+</div>
+<div id="item_sCol" class="hidden">
+	item text in selected state
+</div>
+<div id="item_closeable" class="hidden">
+	if this attribute set to 0 then item will not react on any closing|opening attempts by user action ( it will be possible to change its state by JS API )
+</div>
+<div id="item_locked" class="hidden">
+	items which such attribute not respond on any user actions ( item can be unlocked by JS API)
+</div>
+<div id="item_top" class="hidden">
+	really strange attribute<br>
+	item with such attribute will be rendered as top one in related branch<br>
+	it will be better to use it with caution
+</div>
+
+	
+<div>	
+	</div>
+	</body>
+</html>

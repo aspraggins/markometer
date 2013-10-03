@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>DHTLX libCompiler</title>
+	<link rel="STYLESHEET" type="text/css" href="common/styles.css">
+</head>
+
+<body>
+
+<h1 id="r0ox">DHTMLX libComplier Guide&nbsp;<br id="d_-j">
+ </h1>
+<h2><a name='libc_wzl_'>1. Introduction
+</a></h2>
+<h3><a name='libc_wzl_1'>1.1 Scope of the Document
+</a></h3>
+This document is about <b id="s0c4">libComplier</b> tool. The guide is
+created to give users a full understanding of every feature of
+this utility, describe its interface and the way it operates.<br id="wzl_3">
+<h3><a name='libc_wzl_4'>1.2 Target Readers</a></h3>
+Target readers are users of dhtmlx components.
+<p class="MsoNormal" id="qspa"></p>
+<h2><a name='libc_ak25'>2. What is libComplier</a></h2>
+<b id="k9yh">libComplier</b> is a utility that is created for those users who intend to use dhtmlx components. This tool is designed to make the work of developers much easier. There's no need to set paths to different JS and CSS files required for every single dhtmlx component. <b id="uo7o">libComplier</b> generates one JS and one CSS files out of them all that the user can download and use. So, instead of a pack of different files, we get only two that contain all necessary code (including styles definition). What's more, the tool also provides users with all the necessary image files for the chosen component/components, stored in one archive. <br id="wgfa0">
+<div id="ak250"><br id="nzz8">
+This utility provides users with the possibility to:<br id="nzz80">
+<ul id="nzz81">
+<li id="nzz82">Choose the necessary component/components and desired set of functionality;</li>
+<li id="nzz83">Choose the necessary skin;</li>
+<li id="hmqk">Generate a JS and a CSS files containing compilation of all the JS and CSS files needed for the chosen component/components;</li>
+<li id="n.8w">Generate an archive containing a compiled JS file and all necessary images.</li>
+</ul>
+<br id="fsev">
+<div id="fsev0"><b id="fsev1">Note</b>: two last actions mentioned are done at the same time by one button click.<br id="fsev2">
+<h2><a name='libc_ak251'>3. libComplier's Interface</a></h2>
+<b id="arc2">libComplier</b>'s interface is quite simple, intuitive, and user-friendly. The program is displayed with the help of "3J" <b id="wg16">Layout</b> view with a<b id="x9fl"> Toolbar</b> attached to it. Each item in this Layout can be collapsed or expanded; the dimensions of each them can be easily changed by dragging one of its sides with a mouse.<br id="ak252">
+<h3><a name='libc_ak253'>3.1 Tree</a></h3>
+<font id="vwmn5" size="3"><font id="vwmn6" size="2">The Tree is displayed in the left upper item of Compiler's layout. The main parent tree node is called "dhtmlxComponents". Its child branch items represent dhtmlx components. Leaf items stand for the main functionality of a certain component. <br id="z.cx">
+<br id="w_cg">
+When the user checks any leaf item, all its parent items become checked as well.&nbsp;</font></font><font id="zhru6" size="3"><font id="zhru7" size="2">On startup none of tree items is checked, and only the main parent node is expanded. There is the possibility to&nbsp;</font></font><font id="r0-e" size="3"><font id="r0-e0" size="2"><a title="expand" href="RawDocContents?docID=dgr5rjkf_158fdcx8hdw&amp;justBody=false&amp;revision=_latest&amp;timestamp=1217498361566&amp;editMode=true&amp;strip=true#Expand_all" id="xppy">expand </a></font></font><font id="r0-e1" size="3"><font id="r0-e2" size="2">or </font></font><font id="r0-e3" size="3"><font id="r0-e4" size="2"><a title="collapse" href="RawDocContents?docID=dgr5rjkf_158fdcx8hdw&amp;justBody=false&amp;revision=_latest&amp;timestamp=1217498361566&amp;editMode=true&amp;strip=true#Collapse_all" id="r0-e5">collapse</a></font></font><font id="r0-e6" size="3"><font id="r0-e7" size="2"> all tree nodes using toolbar buttons. Also the user can <a title="check" href="#Check_all" id="ew.l">check</a> or <a title="uncheck" href="#Uncheck_all" id="c3dl">uncheck</a> all tree nodes by one button click.<br id="yajs">
+<br id="lbpp">
+</font></font>
+<p id="o5.q"><font id="o5.q0" size="3"><font id="o5.q1" size="2"><b id="lbpp0">3.1.1 Features</b></font></font></p>
+<font id="o5.q2" size="3"><font id="o5.q3" size="2"><br id="lbpp2">
+There is also a drop-down list called "<b id="ygtm">Features</b>" in the functional panel of </font></font><font id="cv1h" size="3"><font id="cv1h0" size="2">the left upper item of Compiler's layout. This drop-down list </font></font><font id="cv1h1" size="3"><font id="cv1h2" size="2">contains ready-made presets for the most commonly used dhtmlx components or their combinations. <br id="r2vj">
+<br id="f_2g">
+The available ready-made presets are as follows:<br id="fe92">
+<br id="a1i2">
+</font></font>
+<ul id="a1i20">
+<li id="a1i21"><b id="w.74">Custom Set</b> - it's not a preset, it's the possibility for the user to return the tree to its initial state - when nothing is checked;<br id="s-bu">
+</li>
+<li id="s-bu0"><font id="a1i22" size="3"><font id="a1i23" size="2"><b id="cw4v">Grid Basic </b>- this preset includes </font></font>basic grid functionality: data loading, sorting, resizing, editing (ed,ro,txt), data serialization, API for selection and rows adding;</li>
+<li id="nn:w"><b id="cw4v0">Grid Full </b>- this preset contains all grid functionality - grouping, filtering, math, d-n-d, additional excell types;</li>
+<li id="ol0b"><b id="cw4v1">Tree Basic</b> - here the user will find basic tree functionality: data loading from XML, ability to add|delete rows, d-n-d, checkboxes;</li>
+<li id="v62g"><b id="cw4v2">Tree Full </b>- all tree functionality is included into this preset (sorting, loading from json, serialization, operation with cookies);</li>
+<li id="kvcb"><b id="cw4v3">TreeGrid Basic</b> - this preset contains basic treegrid functionality, which is<span id="co8i" style="background-color: rgb(255, 255, 255);"> loading and API, plus basic grid functionality;</span></li>
+</ul>
+<ul id="co8i0">
+<li id="co8i1"><font id="co8i2" size="3"><font id="co8i3" size="2"><b id="cw4v4">TreeGrid Full</b> - </font></font>in this preset the user will find basic treegrid functionality + filtering in treegrid + ability to show tree lines, as well as full grid functionality;&nbsp; <br id="dvm2">
+</li>
+<li id="veus"><b id="cw4v5">Suite Basic</b> - <font id="rgq4" size="3"><font id="rgq40" size="2">this preset includes </font></font>grid, tree, treegrid, combo, and tabbar components with their basic functionality;</li>
+<li id="jw:o"><b id="cw4v6">Suite Full</b> - all functionality of all components is added to this preset;</li>
+<li id="xjix"><b id="cw4v7">Explorer Base</b> - this preset is a base set to use the layout and the main components (tree and grid).<br id="xjix0">
+</li>
+</ul>
+<font id="co8i5" size="3"><font id="co8i6" size="2"><br id="eimi0">
+When the user chooses one of the preset from the list, the utility checks the necessary tree nodes, which files will be compiled, and shows the <a title="details" href="#Details" id="c6lh">details</a> of the chosen preset. <br id="nlm5">
+On startup <b id="aqgx">Custom Set</b> preset is chosen from the drop-down list.<br id="n76g">
+</font></font>
+<h3><a name='libc_n76g0'>3.2 Details
+</a></h3>
+<font id="n76g2" size="3"><font id="n76g3" size="2">The Details part is situated right under the tree, in the left lower part of Complier's layout. It shows brief description for leaf items and for some of the branch items. </font></font><span id="odg1" style="background-color: rgb(255, 255, 255);">The details are used to give the user general information on the chosen item.</span><br id="k-h50">
+<h3><a name='libc_ea7d'>3.3 Used Skin
+</a></h3>
+<font id="ea7d1" size="3"><font id="ea7d2" size="2">This part of </font></font><font id="uru4" size="3"><font id="uru40" size="2">Compiler's layout allows the user to choose the skin he wants to apply to his project. The only thing the user should do is to choose one of the available skins displayed by clicking the radio button near the skin name. Each available skin is backed up by a picture that can be viewed full size by clicking it. The picture then will be opened in a new window.</font></font><br id="k-h51">
+<br id="k-h52">
+<font id="nmsj" size="3"><font id="nmsj0" size="2">On startup <b id="y4wu">dhx_blue</b> skin is chosen.</font></font><br id="k-h54">
+<h3><a name='libc_ea7d3'>3.4 Toolbar&nbsp;
+
+</a></h3>
+The toolbar contains the following buttons:<br id="kuhx2">
+<br id="x4yc">
+<ul id="x4yc0">
+<li id="x4yc1"><b id="a0sf"><a id="km:w" name="Expand_all"></a>Expand all </b>- a click on this button expands all nodes in the <a title="Tree" href="#Tree" id="x:nr">Tree</a>;</li>
+<li id="kuhx3"><b id="a0sf0"><a id="emal" name="Collapse_all"></a>Collapse all</b> - a click on this button collapses all <a title="Tree" href="RawDocContents?docID=dgr5rjkf_158fdcx8hdw&amp;justBody=false&amp;revision=_latest&amp;timestamp=1217498361566&amp;editMode=true&amp;strip=true#Tree" id="r5fl">Tree</a> nodes;</li>
+<li id="kuhx4"><b id="a0sf1"><a id="w9.." name="Check_all"></a>Check all</b> - a click on this button checks all <a title="Tree" href="RawDocContents?docID=dgr5rjkf_158fdcx8hdw&amp;justBody=false&amp;revision=_latest&amp;timestamp=1217498361566&amp;editMode=true&amp;strip=true#Tree" id="a60-">Tree</a> nodes (<span id="l-ho0" style="background-color: rgb(255, 255, 255);">branch </span><span id="w11r" style="background-color: rgb(255, 255, 255);">and </span><span id="w11r1" style="background-color: rgb(255, 255, 255);">leaf </span><span id="w11r2" style="background-color: rgb(255, 255, 255);">ones</span>);</li>
+<li id="kuhx5"><b id="a0sf2"><a id="k8td" name="Uncheck_all"></a>Uncheck all</b> - a click on this button uncheks all <a title="Tree" href="RawDocContents?docID=dgr5rjkf_158fdcx8hdw&amp;justBody=false&amp;revision=_latest&amp;timestamp=1217498361566&amp;editMode=true&amp;strip=true#Tree" id="a60-0">Tree</a> nodes (<span id="w11r3" style="background-color: rgb(255, 255, 255);">branch </span><span id="w11r4" style="background-color: rgb(255, 255, 255);">and </span><span id="w11r6" style="background-color: rgb(255, 255, 255);">leaf </span><span id="w11r7" style="background-color: rgb(255, 255, 255);">ones</span>);</li>
+<li id="kuhx6"><b id="a0sf3"><a id="ofpx" name="Generate"></a>Generate</b> - a click on this button generates a compiled JS and a CSS files in an archive, a link to which is displayed in a popup "<span id="dxg2" style="background-color: rgb(255, 255, 255);"><a title="Generated code" href="#Generated_code_window" id="cwkp">Generated code</a></span>" window.</li>
+</ul>
+<br id="a60-1">
+<b id="k9ie">Note</b>: "<span id="a60-2" style="background-color: rgb(255, 255, 255);">Generated code</span>" window will be displayed only if the user has already chosen a skin and a component/components in the Tree.<br id="a60-3">
+<br id="qufs">
+<p id="o5.q4"><b id="qufs0">3.4.1 <span id="qufs1" style="background-color: rgb(255, 255, 255);"><a id="w60g" name="Generated_code_window"></a>Generated code</span> window</b></p>
+<p id="v2m90"><br id="aj72">
+</p>
+<p id="aj720">This popup window appears when the user clicks "Generate"
+toolbar button. The window contains the progress text while the system
+generates the necessary data. <br id="kspz">
+</p>
+<p id="kspz0">When the data is generated, the window displays the following:</p>
+<p id="ffpe0"><br id="ffpe1">
+</p>
+<ul id="kspz1">
+<li id="kspz2"><b id="ffpe2">Text</b>: 
+		"Ready code stored at [path to the directory the code is stored];</li>
+<li id="ej-70"><b id="ffpe4">Archive link</b>: "Get all as zip" - a link to the generated archive containing a JS file, a CSS file, and all necessary images. The user can download the archive by clicking the link.<br id="ej-71">
+  </li>
+</ul>
+<br id="wg160">
+The user should close the window after the download is finished.<br id="k-h56">
+<h2><a name='libc_rcfk'>4. How libComplier Works
+</a></h2>
+All files (JS and CSS ones) are compressed and compiled into one JS and one CSS files, which is put into an archive together with all the necessary image files.<br id="l3we">
+<br id="l3we0">
+The only parameter in <b id="s-34"><font id="x-751" size="3"><font id="x-752" size="2">get_files.php</font></font></b> file, that the user can indicate, is  the following:<br id="s-340">
+<blockquote id="s-341"><font id="s-342" size="3"><font id="s-343" size="2">define("YUI",true);</font></font><br id="k-h57">
+</blockquote>
+<font id="s-344" size="3"><font id="s-345" size="2">Here <b id="s-346">true</b> means that YUI compressor will be used for files compression. While <b id="s-347">false </b>stands for more simple files compression.<br id="k-h58">
+<br id="azrf">
+ </font></font></div>
+<br id="m87w">
+</div>
+<br id="ebkd">
+
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>dhtmlxTreeGrid XML</title>
+		<link rel="stylesheet" href="data.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<script src="data.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body id="xml_scheme" onload="init_first_scheme()">
+		<div id="informer">
+				<span style="text-decoration:none; border-bottom: none; cursor: default;">Look Grid related page for common syntax</span>
+				<span id="start_me" onclick="init_scheme('basicD',this)">TreeGrid specific</span>
+				<span style="text-decoration: none; cursor: default; border: none;"><big><b>|</b></big></span>
+				<span onclick="init_scheme('plain',this)">Plain view (<small><img src="../../codebase/imgs/icon_html.gif" border="0" alt="" style="margin-bottom: -3px;"> html</small>)</span>
+				<span><a href="treegrid_xml.pdf" target="_blank">Plain view (<small><img src="../../codebase/imgs/icon_pdf.gif" border="0" alt="" style="margin-bottom: -3px;"> pdf</small>)</a></span>
+		</div>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" id="xml_1">
+			<tr><th width="50%"></th><th width="50%"></td></tr>
+		</table>
+
+
+<textarea id="xml_basicD" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" ?>
+<rows parent="0">	#top xml tag, mandatory
+	<row id="11" open="1">  #expanded row
+		<cell image="some.gif"> first column data </cell>#custom image for tree cell
+		<cell> second column data </cell>
+		<row id="110">  #sub row
+			<cell> first column data </cell>
+			<cell> second column data </cell>
+		</row>
+	</row>
+	<row id="12" xmlkids="1">  #row has not loaded sub-rows
+			<cell> first column data </cell>
+			<cell> second column data </cell>
+	</row>
+</rows>
+</textarea>
+
+
+		
+			
+<div id="ev_catcher">
+
+		
+<div id="row_" class="hidden">
+	<h3>row</h3>
+	tag represent row of grid, one tag for each row<br>
+	supports all attribute of normal grid + two additional
+	<h4></h4>
+	<li>open - branch will be opened on load</li>
+	<li>xmlkids - flag of not loaded child rows</li>
+</div>
+
+<div id="row_open" class="hidden">
+	branch will be opened on load, attribute need to be skipped if you want to have closed branch
+</div>
+<div id="row_xmlkids" class="hidden">
+	used in dynamical loading mode only,<br> attribute states that there are some sub-rows exists, but they not loaded yet, <br> component will send additional request on item opening, to fetch additional data
+</div>
+
+
+
+<div id="rows_" class="hidden">
+	<h3>rows</h3>
+	just top xml tag, has no special meaning
+	<h4>TreeGrid specific attributes</h4>
+	<li>parent - id of parent row</li>
+</div>
+
+<div id="rows_parent" class="hidden">
+	used in dynamic loading only<br>
+	attribute contain ID of element for which data in XML must be attached as child rows<br>
+	"super root" item has ID = 0 
+</div>
+
+<div id="cell_" class="hidden"> 
+	<h3>cell</h3>
+	represent cell of grid, supports all attributes used in plain grid
+	<h4>TreeGrid specific attributes</h4>
+	<li>image - image which will be used for related tree cell of row</li>
+</div>
+<div id="cell_image" class="hidden">
+	image which will be used for related tree cell of row
+</div>
+	</div>
+	</body>
+</html>	
+

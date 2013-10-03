@@ -1,0 +1,84 @@
+<!--conf
+<sample in_favorites="true">
+              <product version="1.1" edition="std"/>
+                     <modifications>
+                            <modified date="070101"/>
+                     </modifications>
+               </sample>
+ --> 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Using API</title>
+	<script>
+		window.dhx_globalImgPath="../../codebase/imgs/";
+	</script>
+	<link rel="STYLESHEET" type="text/css" href="../../codebase/dhtmlxcombo.css">
+	
+	<script  src="../../codebase/dhtmlxcommon.js"></script>
+	<script  src="../../codebase/dhtmlxcombo.js"></script>
+	
+</head>
+   
+
+<body>
+<link rel='STYLESHEET' type='text/css' href='../common/style.css'>
+<table cellspacing="0" cellpadding="0" class="sample_header" border="0">
+	<tr valign="middle">
+		<!-- COMPONENT ICON -->
+		<td width="40" align="center"><img src="../common/dhtmlxcombo_icon.gif" border="0"></td>
+		<!-- COMPONENT NAME -->
+		<td width="150" align="left" nowrap="true">Sample: dhtmlxCombo</td>
+		<!-- SAMPLE TITLE -->
+		<td width="0" align="left" nowrap><b>Using API</b></td>
+		<!-- LINK TO COMPONENT PAGE -->
+		<td width="0" align="right"><a href="http://www.dhtmlx.com/docs/products/dhtmlxCombo/index.shtml">dhtmlxCombo main page</a></td>
+		<!-- CLOSE BUTTON -->
+		<td width="50"><div class="sample_close"><a href="javascript:void(0);" onclick="self.close();"><img src="../common/sample_close.gif" width="14" height="14" border="0" alt="X"></a></div></td>
+	</tr>
+</table>
+	
+	
+	<p>Manipulate list content and appearance using Combo API methods</p>
+
+<div id="combo_zone" style="width:200px; height:30px;"></div>
+<br>
+<div class='sample_code'><div class="hl-main"><pre><span class="hl-code"> 
+    </span><span class="hl-identifier">z</span><span class="hl-code">.</span><span class="hl-identifier">clearAll</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;                </span><span class="hl-comment">//</span><span class="hl-comment">clearAll</span><span class="hl-comment"></span><span class="hl-code">
+    </span><span class="hl-identifier">z</span><span class="hl-code">.</span><span class="hl-identifier">deleteOption</span><span class="hl-brackets">(</span><span class="hl-identifier">z</span><span class="hl-code">.</span><span class="hl-identifier">getSelectedValue</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;    </span><span class="hl-comment">//</span><span class="hl-comment">delete selected option</span><span class="hl-comment"></span><span class="hl-code">
+    </span><span class="hl-identifier">z</span><span class="hl-code">.</span><span class="hl-identifier">getComboText</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;                 </span><span class="hl-comment">//</span><span class="hl-comment">get current combo text</span><span class="hl-comment"></span><span class="hl-code">
+    </span><span class="hl-identifier">z</span><span class="hl-code">.</span><span class="hl-identifier">getSelectedText</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;             </span><span class="hl-comment">//</span><span class="hl-comment">get selected text</span><span class="hl-comment"></span></pre></div></div>
+<br>
+<table width="100%"><tr><td>
+	<a href="javascript:void(0)" onclick="z.setComboText(document.getElementById('ctxt').value)">set text</a> <input type="text" id="ctxt" size="10" value="combo"><br>
+	<a href="javascript:void(0)" onclick="z.updateOption(2,2,document.getElementById('labtxt').value,'')">set new label for second option</a><input type="text" id="labtxt" size="10" value="New label"><br>
+	<a href="javascript:z.clearAll();z.openSelect();">clearAll</a><br>
+	<a href="javascript:z.clearAll();z.addOption([[1,1111],[2,2222],[3,3333],[4,4444],[5,5555]]);z.openSelect();">reload</a><br>
+	<a href="javascript:z.deleteOption(z.getSelectedValue());showInfoD()">delete selected option</a><br>
+	<a href="javascript:void(0)" onclick="document.getElementById('info').innerHTML+='Curren text '+z.getComboText()+'<br></a>'">get current combo text</a><br>
+	<a href="javascript:void(0)" onclick="document.getElementById('info').innerHTML+='Selected text '+z.getSelectedText()+'<br>'">get selected text</a><br>
+	<a href="javascript:void(0)" onclick="document.getElementById('info').innerHTML+='Option ' +z.getSelectedText()+' with value '+z.getSelectedValue()+'  is selected<br>'">get selected value</a><br>
+</td><td width="50%"><div id="info" width="100%" height="200"></div></td></tr></table>
+
+
+
+
+
+
+<script>
+		var z=new dhtmlXCombo("combo_zone","alfa",200);
+        z.addOption([[1,1111],[2,2222],[3,3333],[4,4444],[5,5555]]);
+		function showInfoD(){
+			document.getElementById('info').innerHTML+=z.getSelectedText()+' is deleted<br>';
+			z.setComboText("");
+		}		
+</script>
+	
+<!-- FOOTER -->
+<table callspacing="0" cellpadding="0" border="0" class="sample_footer"><tr><td style="padding-left: 8px;">&copy; <a href="http://www.dhtmlx.com">DHTMLX LTD</a>. All rights reserved</td></tr></table>
+<!-- FOOTER -->
+
+</body>
+</html>
+

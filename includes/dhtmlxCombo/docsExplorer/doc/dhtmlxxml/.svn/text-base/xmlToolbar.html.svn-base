@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>dhtmlxToolbar XML</title>
+		<link rel="stylesheet" href="data.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<script src="data.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body id="xml_scheme" onload="init_first_scheme()">
+		<div id="informer">
+				<span id="start_me"  onclick="init_scheme('basic',this)">Basic</span>
+				<span onclick="init_scheme('full',this)">Full</span>
+				<span style="text-decoration: none; cursor: default; border: none;"><big><b>|</b></big></span>
+				<span onclick="init_scheme('plain',this)">Plain view (<small><img src="../../codebase/imgs/icon_html.gif" border="0" alt="" style="margin-bottom: -3px;"> html</small>)</span>
+				<span><a href="toolbar_xml.pdf" target="_blank">Plain view (<small><img src="../../codebase/imgs/icon_pdf.gif" border="0" alt="" style="margin-bottom: -3px;"> pdf</small>)</a></span>
+		</div>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" id="xml_1">
+			<tr><th width="50%"></th><th width="50%"></td></tr>
+		</table>
+		
+<textarea id="xml_full" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" encoding="iso-8859-1" ?> #encoding can be important 
+<toolbar toolbarAlign="left" absolutePosition="yes" left="100" top="100" name="Demo menu" width="600px" height="20px" globalTextCss="someCss2" globalCss="someCss4"> #most probably you will never need one from those attributes
+	<ImageButton id="b1" src="some1.gif" width="20px" height="20px" mouseover="alter.gif" className="css1" tooltip="some text here" disabled="true" disableImage="alter2.gif"/> #image button
+	<ImageTextButton id="b2" src="some2.gif" width="20px" height="20px" mouseover="alter.gif" className="css1" textClassName="css2" tooltip="some text here" disabled="true" disableImage="alter2.gif"> #image button with text
+		Text part here
+	</ImageTextButton>
+	<LabelButton id="label1" width="20px" > #just a label
+		Label here
+	</LabelButton>
+	<divider id="d1" />	#divider
+	<ImageTextButtonXP id="b3" src="some3.gif" width="20px" height="20px" mouseover="alter.gif" className="css1" textClassName="css2" tooltip="some text here" disabled="true" disableImage="alter2.gif"> #XP like image button with text
+		Text part here
+	</ImageTextButtonXP>	
+	<TwoStateButton id="b4" src="some4.gif" pressedState="true" width="20px" height="20px" className="css1" tooltip="some text here" disabled="true" disableImage="alter2.gif">	#two state button
+		Text part here
+	</TwoStateButton>	
+	<SelectButton id="b5" valueList="1,2,3" displayList="One,Two,Three" width="20px" height="20px" className="css1"  disabled="true"  />	#selectbox
+</toolbar>
+</textarea>
+
+
+<textarea id="xml_basic" rows="28" cols="120" style='display:none'>
+<?xml version='1.0' ?>
+<toolbar>
+	<ImageButton id="b1" src="some1.gif" /> #image button
+	<ImageTextButton id="b2" src="some2.gif"> #image button with text
+		Text part here
+	</ImageTextButton>
+	<LabelButton id="label1"> #just a label
+		Label here
+	</LabelButton>
+	<divider id="d1" />	#divider
+	<ImageTextButtonXP id="b3" src="some3.gif"> #XP like image button with text
+		Text part here
+	</ImageTextButtonXP>	
+	<TwoStateButton id="b4" src="some4.gif" pressedState="true">	#two state button
+		Text part here
+	</TwoStateButton>	
+	<SelectButton id="b5" valueList="1,2,3" displayList="One,Two,Three" />	#selectbox
+</toolbar>
+</textarea>
+		
+			
+<div id="ev_catcher">
+	
+<div id="toolbar_" class="hidden">
+	just top element of XML, can contain a LOT of attributes<br>
+	but in real life you most probably will not use any of it<br>
+	<h4>Optional attributes</h4>
+	<li>toolbarAlign - align of toolbar items </li>
+	<li>absolutePosition - mode of toolbar positioning</li>
+	<li>left - absolute left position</li>
+	<li>top - absolute top position</li>
+	<li>name - label on toolbar</li>
+	<li>width - width of toolbar </li>
+	<li>height - height of toolbar </li>
+	<li>globalTextCss - css for text of toolbar buttons</li>
+	<li>globalCss - css for toolbar buttons</li>
+</div>	
+
+
+<div id="toolbar_toolbarAlign" class="hidden">
+	align of toolbar items, inside toolbar<br>
+	<li>right</li>
+	<li>left</li>
+</div>
+<div id="toolbar_absolutePosition" class="hidden">
+	if this attribute present , toolbar position will be changed to absolute<br>
+	( in 99.9% of cases you will NOT need it)
+</div>
+<div id="toolbar_top" class="hidden">
+	if absolute position enabled, this attribute can specify top coordinate of toolbar
+</div>
+<div id="toolbar_left" class="hidden">
+	if absolute position enabled, this attribute can specify left coordinate of toolbar
+</div>
+<div id="toolbar_name" class="hidden">
+	optional text on toolbar
+</div>
+<div id="toolbar_width" class="hidden">
+	width of toolbar ( optional, by default value from js command used )
+</div>
+<div id="toolbar_height" class="hidden">
+	height of toolbar ( optional, by default value from js command used )
+</div>
+<div id="toolbar_globalTextCss" class="hidden">
+	css class which will be applied to text inside toolbar items
+</div>
+<div id="toolbar_globalCss" class="hidden">
+	css which will be applied to toolbar items 
+</div>
+
+
+
+
+
+<div id="divider_" class="hidden">
+	toolbar  divider
+	<h4>Optional attributes</h4>
+	<li>id - item identificator</li>
+</div>
+
+<div id="divider_id" class="hidden">
+	item identificator, not really necessary ,<br> but can be used for manipulation by JS API
+</div>
+	
+<div id="ImageButton_" class="hidden">
+	tag represent button on toolbar - image button <br>
+	can contain multiple attributes, but only few of them really necessary, most are optional
+	<h4>Mandatory attributes</h4>
+	<li>id - identificator of toolbar button</li>
+	<h4 id="common_attributes">Optional attributes</h4>
+	<li>src - source of image used as button</li>
+	<li>width - width of button </li>
+	<li>height  - height of button </li>
+	<li>mouseover - alternative image url</li>
+	<li>className - css class</li>
+	<li>tooltip - tooltip of item</li>
+	<li>disabled - item initially disabled</li>
+	<li>disableImage - src used for item image in disabled state</li>
+</div>
+
+<div id="ImageButton_id" class="hidden">
+	id of toolbar button<br>
+	must be unique per toolbar
+</div>
+<div id="ImageButton_src" class="hidden">
+	url to image used as toolbar button 
+</div>
+<div id="ImageButton_width" class="hidden">
+	width of button ( in pixels )
+</div>
+<div id="ImageButton_height" class="hidden">
+	height of button ( in pixels )
+</div>
+<div id="ImageButton_mouseover" class="hidden">
+	optional url, to image, which will be shown instead of default one, when mouse moved over button
+</div>
+<div id="ImageButton_className" class="hidden">
+	css class which will be applied to button
+</div>
+<div id="ImageButton_tooltip" class="hidden">
+	tooltip of button
+</div>
+<div id="ImageButton_disabled" class="hidden">
+	if attribute exists, button will be rendered in disabled state ( can be enabled later, by js API )
+</div>
+<div id="ImageButton_disableImage" class="hidden">
+	in disabled state button change its css class , so it possible to define custom disabled effect, <br>
+	if it is not enough, it possible to define one more image which will be used in disabled state
+</div>
+
+
+
+<div id="ImageTextButton_" class="hidden">
+	tag represent button on toolbar - image with text button - text right to image <br>
+	can contain multiple attributes, but only few of them really necessary, most are optional<br>
+	value of tag will be used as text part of button
+	<h4>Mandatory attributes</h4>
+	<li>id - identificator of toolbar button</li>
+	<h4 id="common_attributes">Optional attributes</h4>
+	<li>src - source of image used as button</li>
+	<li>width - width of button </li>
+	<li>height  - height of button </li>
+	<li>mouseover - alternative image url</li>
+	<li>className - css class</li>
+	<li>textClassName - css class which will be applied to text part of button</li>
+	<li>tooltip - tooltip of item</li>
+	<li>disabled - item initially disabled</li>
+	<li>disableImage - src used for item image in disabled state</li>
+</div>
+
+<div id="ImageTextButton_id" class="hidden">
+	id of toolbar button<br>
+	must be unique per toolbar
+</div>
+<div id="ImageTextButton_src" class="hidden">
+	url to image used as toolbar button 
+</div>
+<div id="ImageTextButton_width" class="hidden">
+	width of button ( in pixels )
+</div>
+<div id="ImageTextButton_height" class="hidden">
+	height of button ( in pixels )
+</div>
+<div id="ImageTextButton_mouseover" class="hidden">
+	optional url, to image, which will be shown instead of default one, when mouse moved over button
+</div>
+<div id="ImageTextButton_className" class="hidden">
+	css class which will be applied to button
+</div>
+<div id="ImageTextButton_textClassName" class="hidden">
+	css class which will be applied to text part of button
+</div>
+<div id="ImageTextButton_tooltip" class="hidden">
+	tooltip of button
+</div>
+<div id="ImageTextButton_disabled" class="hidden">
+	if attribute exists, button will be rendered in disabled state ( can be enabled later, by js API )
+</div>
+<div id="ImageTextButton_disableImage" class="hidden">
+	in disabled state button change its css class , so it possible to define custom disabled effect, <br>
+	if it is not enough, it possible to define one more image which will be used in disabled state
+</div>
+
+
+<div id="ImageTextButtonXP_" class="hidden">
+	tag represent button on toolbar - image with text button - text on the bottom of button <br>
+	can contain multiple attributes, but only few of them really necessary, most are optional<br>
+	value of rag will be used as text part of button
+	<h4>Mandatory attributes</h4>
+	<li>id - identificator of toolbar button</li>
+	<h4 id="common_attributes">Optional attributes</h4>
+	<li>src - source of image used as button</li>
+	<li>width - width of button </li>
+	<li>height  - height of button </li>
+	<li>mouseover - alternative image url</li>
+	<li>className - css class</li>
+	<li>textClassName - css class which will be applied to text part of button</li>
+	<li>tooltip - tooltip of item</li>
+	<li>disabled - item initially disabled</li>
+	<li>disableImage - src used for item image in disabled state</li>
+</div>
+
+<div id="ImageTextButtonXP_id" class="hidden">
+	id of toolbar button<br>
+	must be unique per toolbar
+</div>
+<div id="ImageTextButtonXP_src" class="hidden">
+	url to image used as toolbar button 
+</div>
+<div id="ImageTextButtonXP_width" class="hidden">
+	width of button ( in pixels )
+</div>
+<div id="ImageTextButtonXP_height" class="hidden">
+	height of button ( in pixels )
+</div>
+<div id="ImageTextButtonXP_mouseover" class="hidden">
+	optional url, to image, which will be shown instead of default one, when mouse moved over button
+</div>
+<div id="ImageTextButtonXP_className" class="hidden">
+	css class which will be applied to button
+</div>
+<div id="ImageTextButtonXP_textClassName" class="hidden">
+	css class which will be applied to text part of button
+</div>
+<div id="ImageTextButtonXP_tooltip" class="hidden">
+	tooltip of button
+</div>
+<div id="ImageTextButtonXP_disabled" class="hidden">
+	if attribute exists, button will be rendered in disabled state ( can be enabled later, by js API )
+</div>
+<div id="ImageTextButtonXP_disableImage" class="hidden">
+	in disabled state button change its css class , so it possible to define custom disabled effect, <br>
+	if it is not enough, it possible to define one more image which will be used in disabled state
+</div>
+
+
+
+<div id="TwoStateButton_" class="hidden">
+	tag represent button on toolbar - two state button<br>
+	can contain multiple attributes, but only few of them really necessary, most are optional<br>
+	value of tag will be used as text part of button
+	<h4>Mandatory attributes</h4>
+	<li>id - identificator of toolbar button</li>
+	<h4 id="common_attributes">Optional attributes</h4>
+	<li>src - source of image used as button</li>
+	<li>width - width of button </li>
+	<li>height  - height of button </li>
+	<li>mouseover - alternative image url</li>
+	<li>className - css class</li>
+	<li>textClassName - css class which will be applied to text part of button</li>
+	<li>tooltip - tooltip of item</li>
+	<li>disabled - item initially disabled</li>
+	<li>disableImage - src used for item image in disabled state</li>
+	<li>pressedState - current state of button</li>
+</div>
+
+<div id="TwoStateButton_id" class="hidden">
+	id of toolbar button<br>
+	must be unique per toolbar
+</div>
+<div id="TwoStateButton_src" class="hidden">
+	url to image used as toolbar button 
+</div>
+<div id="TwoStateButton_width" class="hidden">
+	width of button ( in pixels )
+</div>
+<div id="TwoStateButton_height" class="hidden">
+	height of button ( in pixels )
+</div>
+<div id="TwoStateButton_mouseover" class="hidden">
+	optional url, to image, which will be shown instead of default one, when mouse moved over button
+</div>
+<div id="TwoStateButton_className" class="hidden">
+	css class which will be applied to button
+</div>
+<div id="TwoStateButton_textClassName" class="hidden">
+	css class which will be applied to text part of button
+</div>
+<div id="TwoStateButton_tooltip" class="hidden">
+	tooltip of button
+</div>
+<div id="TwoStateButton_disabled" class="hidden">
+	if attribute exists, button will be rendered in disabled state ( can be enabled later, by js API )
+</div>
+<div id="TwoStateButton_disableImage" class="hidden">
+	in disabled state button change its css class , so it possible to define custom disabled effect, <br>
+	if it is not enough, it possible to define one more image which will be used in disabled state
+</div>
+<div id="TwoStateButton_pressedState" class="hidden">
+	allows to set current state of button
+	<li>true - button pressed</li>
+	<li>false - button not pressed</li>
+</div>
+
+
+<div id="SelectButton_" class="hidden"> 
+	tag represent button on toolbar - selectbox<br>
+	can contain multiple attributes, but only few of them really necessary, most are optional<br>
+	value of tag will be used as text part of button
+	<h4>Mandatory attributes</h4>
+	<li>id - identificator of toolbar button</li>
+	<h4 id="common_attributes">Optional attributes</h4>
+	<li>width - width of button </li>
+	<li>height  - height of button </li>
+	<li>className - css class</li>
+	<li>disabled - item initially disabled</li>
+	<li>valueList - comma separated list of values</li>
+	<li>displayList - comma separated list of labels</li>
+</div>
+
+<div id="SelectButton_id" class="hidden">
+	id of toolbar button<br>
+	must be unique per toolbar
+</div>
+<div id="SelectButton_width" class="hidden">
+	width of button ( in pixels )
+</div>
+<div id="SelectButton_height" class="hidden">
+	height of button ( in pixels )
+</div>
+<div id="SelectButton_className" class="hidden">
+	css class which will be applied to button
+</div>
+<div id="SelectButton_disabled" class="hidden">
+	if attribute exists, button will be rendered in disabled state ( can be enabled later, by js API )
+</div>
+<div id="SelectButton_valueList" class="hidden">
+	comma separated list of values
+</div>
+<div id="SelectButton_displayList" class="hidden">
+	comma separated list of labels, not HTML allowed
+</div>
+
+
+
+
+
+<div id="LabelButton_" class="hidden">
+	tag represent button on toolbar - label<br>
+	value of tag will be used as text part of button
+	<h4>Mandatory attributes</h4>
+	<li>id - identificator of toolbar button</li>
+	<h4 id="common_attributes">Optional attributes</h4>
+	<li>width - width of button </li>
+</div>
+
+<div id="LabelButton_id" class="hidden">
+	id of toolbar button<br>
+	must be unique per toolbar
+</div>
+<div id="LabelButton_width" class="hidden">
+	width of button ( in pixels )
+</div>
+
+
+	
+<div>	
+	</div>
+	</body>
+</html>

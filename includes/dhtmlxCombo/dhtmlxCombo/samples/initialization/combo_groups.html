@@ -1,0 +1,123 @@
+<!--conf
+<sample in_favorites="true">
+              <product version="1.2" edition="std"/>
+                     <modifications>
+                            <modified date="070101"/>
+                     </modifications>
+               </sample>
+ -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Grouping</title>
+	<script>
+		window.dhx_globalImgPath="../../codebase/imgs/";
+	</script>
+	<link rel="STYLESHEET" type="text/css" href="../../codebase/dhtmlxcombo.css">
+	
+	<script  src="../../codebase/dhtmlxcommon.js"></script>
+	
+	<script src="../../codebase/dhtmlxcombo.js" type="text/javascript"></script>
+	
+	<script src="../../codebase/ext/dhtmlxcombo_group.js" type="text/javascript"></script>
+</head>
+
+  
+<body>
+<link rel='STYLESHEET' type='text/css' href='../common/style.css'>
+<table cellspacing="0" cellpadding="0" class="sample_header" border="0">
+	<tr valign="middle">
+		<!-- COMPONENT ICON -->
+		<td width="40" align="center"><img src="../common/dhtmlxcombo_icon.gif" border="0"></td>
+		<!-- COMPONENT NAME -->
+		<td width="150" align="left" nowrap="true">Sample: dhtmlxCombo</td>
+		<!-- SAMPLE TITLE -->
+		<td width="0" align="left" nowrap><b>Grouping</b></td>
+		<!-- LINK TO COMPONENT PAGE -->
+		<td width="0" align="right"><a href="http://www.dhtmlx.com/docs/products/dhtmlxCombo/index.shtml">dhtmlxCombo main page</a></td>
+		<!-- CLOSE BUTTON -->
+		<td width="50"><div class="sample_close"><a href="javascript:void(0);" onclick="self.close();"><img src="../common/sample_close.gif" width="14" height="14" border="0" alt="X"></a></div></td>
+	</tr>
+</table>
+	
+<p>Combo groups</p>
+There is an opportunity to organize groups of interdependent combos. When you select option in a parent combo , a value of selected option is sent with a request and the child combos are filled up with the necessary options.
+
+ 
+<h3>Combo groups in different containers</h3>
+Method attachChildCombo allows to set child combo in another container.<br/> 
+It has two parameters: 
+<ul><li>object of the child combo</li><li>path to script which generates xml</li></ul>
+  
+<table><tr><td><div id="combo_zone" style="width:200px; height:30px;"></div></td>
+<td><div id="combo_zone2" style="width:200px; height:30px;"></div></td>
+<td><div id="combo_zone3" style="width:200px; height:30px;"></div></td>
+</tr></table>
+<div class='sample_code'><div class="hl-main"><pre><span class="hl-code"> 
+    </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">z3</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">dhtmlXCombo</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">combo_zone3</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-quotes">&quot;</span><span class="hl-string">alfa3</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-number">200</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">z3</span><span class="hl-code">.</span><span class="hl-identifier">loadXML</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">3.php</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">
+        
+    </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">z2</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">dhtmlXCombo</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">combo_zone2</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-quotes">&quot;</span><span class="hl-string">alfa2</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-number">200</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">z2</span><span class="hl-code">.</span><span class="hl-identifier">enableFilteringMode</span><span class="hl-brackets">(</span><span class="hl-reserved">true</span><span class="hl-brackets">)</span><span class="hl-code">;    
+    </span><span class="hl-identifier">z2</span><span class="hl-code">.</span><span class="hl-identifier">attachChildCombo</span><span class="hl-brackets">(</span><span class="hl-identifier">z3</span><span class="hl-code">,</span><span class="hl-quotes">&quot;</span><span class="hl-string">3.php</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">z2</span><span class="hl-code">.</span><span class="hl-identifier">loadXML</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">2.php</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">;    
+        
+    </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">z</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">dhtmlXCombo</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">combo_zone</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-quotes">&quot;</span><span class="hl-string">alfa</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-number">200</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">z</span><span class="hl-code">.</span><span class="hl-identifier">enableFilteringMode</span><span class="hl-brackets">(</span><span class="hl-reserved">true</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">z</span><span class="hl-code">.</span><span class="hl-identifier">attachChildCombo</span><span class="hl-brackets">(</span><span class="hl-identifier">z2</span><span class="hl-code">,</span><span class="hl-quotes">&quot;</span><span class="hl-string">2.php</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">z</span><span class="hl-code">.</span><span class="hl-identifier">loadXML</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">1.xml</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span></pre></div></div>
+		
+<h3>Combo groups in the same container</h3>
+You can define a child combo in the same container with its parent by setAutoSubCombo(url,name) method.
+
+<div id="combo_zone4" style="width:200px; height:30px;"></div>
+<br/>
+<br/>
+
+<div class='sample_code'><div class="hl-main"><pre><span class="hl-code"> 
+    </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">z4</span><span class="hl-code">=</span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">dhtmlXCombo</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">combo_zone4</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-quotes">&quot;</span><span class="hl-string">alfa4</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-number">200</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">z4</span><span class="hl-code">.</span><span class="hl-identifier">enableFilteringMode</span><span class="hl-brackets">(</span><span class="hl-reserved">true</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">z4</span><span class="hl-code">.</span><span class="hl-identifier">loadXML</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">1.xml</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">    
+    </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">z5</span><span class="hl-code"> =  </span><span class="hl-identifier">z4</span><span class="hl-code">.</span><span class="hl-identifier">setAutoSubCombo</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">2.php</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-quotes">&quot;</span><span class="hl-string">alpha5</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">
+    </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">z6</span><span class="hl-code"> =  </span><span class="hl-identifier">z5</span><span class="hl-code">.</span><span class="hl-identifier">setAutoSubCombo</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">3.php</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-quotes">&quot;</span><span class="hl-string">alpha6</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span></pre></div></div>
+
+
+
+	<script>
+	
+		var z3=new dhtmlXCombo("combo_zone3","alfa5",200);
+		z3.loadXML("3.php")
+		
+		
+		var z2=new dhtmlXCombo("combo_zone2","alfa5",200);
+		z2.enableFilteringMode(true);	
+		z2.attachChildCombo(z3,"3.php");
+		z2.loadXML("2.php")	
+				
+		
+		var z=new dhtmlXCombo("combo_zone","alfa2",200);
+	  	z.enableFilteringMode(true);
+		z.attachChildCombo(z2,"2.php");
+		z.loadXML("1.xml")	
+		
+ 
+		
+		
+		
+		var z4=new dhtmlXCombo("combo_zone4","alfa2",200);
+	  	z4.enableFilteringMode(true);
+		z4.loadXML("1.xml")	
+		var z5 =  z4.setAutoSubCombo("2.php","alpha2")
+		var z6 =  z5.setAutoSubCombo("3.php","alpha3")
+		
+        
+		
+	</script>
+
+<!-- FOOTER -->
+<table callspacing="0" cellpadding="0" border="0" class="sample_footer"><tr><td style="padding-left: 8px;">&copy; <a href="http://www.dhtmlx.com">DHTMLX LTD</a>. All rights reserved</td></tr></table>
+<!-- FOOTER -->
+
+</body>
+</html>

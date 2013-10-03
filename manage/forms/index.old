@@ -1,0 +1,66 @@
+<?php # Manage Forms Page
+
+require_once('/home/rneel/web/htdocs/includes/config.inc.php');
+$page_title = 'My Forms';
+include('/home/rneel/web/htdocs/includes/header.html');
+
+//If no first_name session variable exists, redirect the user (not logged in):
+if(!isset($_SESSION['first_name'])) {
+	$url = '/login/?returnpage=manage/forms/'; //Define the URL
+	ob_end_clean(); //Delete the buffer
+	header("Location: $url");
+	exit(); //Quit the script
+}
+?>  
+
+<!-- Prototype and Scriptaculous libraries for effects -->
+<script src="/includes/prototype.js" type="text/javascript"></script>
+<script src="/includes/effects.js" type="text/javascript"></script>
+<!-- Sortable library: -->
+<script src="/includes/sortable.js" type="text/javascript"></script>
+
+<h1>Manage Your Forms</h1>
+<p>Click on header to sort..Click on page to edit</p>
+
+<?php
+//MYSQL Setup:
+require_once(MYSQL);
+
+//Code to display success page when new page added:
+if (isset($_REQUEST['action'])) {
+	if ($_REQUEST['action']=='formadded') {
+		echo '<table border="1" bgcolor="#98FB98">
+		<tr><td>New Form successfully added.</td></tr></table><br /><br />';
+	}
+}
+
+//Build Page:
+//Build query for action pages:
+$q = "SELECT id, name, date_modified, form_id " . 
+"FROM  forms " . 
+"WHERE account_id={$_SESSION['account_id']} " . 
+"ORDER BY date_modified DESC";
+	
+$r = mysqli_query($dbc,$q) or trigger_error("Query: $q\n<br />MySQL Error: " . 
+mysqli_error($dbc));
+
+if (mysqli_num_rows($r) > 0) {
+	//Table header:
+	echo '<table id="forms_sortable" border="0" width="50%" class="sortable">
+	<tr><th>Form</th><th>Last Updated</th></tr>';
+
+	//Fetch records, build table:
+	while ($row = mysqli_fetch_array($r,MYSQLI_ASSOC)) {
+		echo '<tr>
+		<td sorttable_customkey="' . $row['name'] . '">' . 
+		'<a href="/jotform/edit.php?formID=' . $row['form_id'] . '&name=' . 
+		$row['name'] . '">' . $row['name'] . '</a>' . 
+		'</td><td valign="top">' . $row['date_modified'] . '</td></tr>'; 		
+	}
+	echo '</table>';
+} else {
+	echo 'No forms found!';
+}
+
+include ('/home/rneel/web/htdocs/includes/footer.html');
+?>  

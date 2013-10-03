@@ -1,0 +1,34 @@
+10
+
+dir
+7814
+svn+ssh://rneel@mp41.com/svnrepos/web/trunk/htdocs/settings/subaccount
+svn+ssh://rneel@mp41.com/svnrepos/web
+
+
+
+2011-07-17T17:14:34.575771Z
+7372
+jeklund
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+c4476d4a-f853-0410-b486-cc46d5653d82
+
+add
+dir
+
+edit
+dir
+

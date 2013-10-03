@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>dhtmlxMenu XML</title>
+		<link rel="stylesheet" href="data.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<script src="data.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body id="xml_scheme" onLoad="init_first_scheme()">
+		<div id="informer">
+				<span id="start_me"  onclick="init_scheme('basic',this)">Basic</span>
+				<span onClick="init_scheme('full',this)">Full</span>
+				<span style="text-decoration: none; cursor: default; border: none;"><big><b>|</b></big></span>
+				<span onClick="init_scheme('plain',this)">Plain view (<small><img src="../../codebase/imgs/icon_html.gif" border="0" alt="" style="margin-bottom: -3px;"> html</small>)</span>
+				
+		</div>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" id="xml_1">
+			<tr><th width="50%"></th><th width="50%"></td></tr>
+		</table>
+		
+<textarea id="xml_full" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" ?>  
+<menu> # a top XML tag
+	<item id="file" text="File"> # a top-level item
+		<item id="new" text="New" img="new.gif" imgdis="new_dis.gif"> # a sub-level item with images for enabled/disanled states
+			<hotkey>Ctrl+N</hotley> # a hotkey (just a text) to a menu item
+		</item>
+		<item id="ms1" type="separator"/> # a sub-level separator item
+		...
+		<item id="export" text="Export">	
+			<item id="export_pdf" text="PDF" enabled="false"/> # a sub-level item disabled by default
+			...
+		</item>
+		...
+		<item id="eol" text="End of Line">
+			<item id="eol_u" text="Unix (\n)" type="radio" group="eol" checked="true"/>	# a radiobutton, group "eol", checked by default
+			<item id="eol_w" text="DOS/Windows (\r\n)" type="radio" group="eol"/> # a radiobutton, group "eol"
+			<item id="eol_m" text="MacOS (\r)" type="radio" group="eol"/> # a radiobutton, group "eol"
+			<item id="eol_m" text="MacOS (\r)" type="radio" group="eol"/> # a radiobutton, group "eol", disabled
+													# we got a radiogroup "eol" with 4 buttons, 1 of which is disabled
+		</item>
+		<item id="ms2" type="separator"/>
+		<item id="ignorecase" text="Ignore Case" type="checkbox" checked="true" enabled="false"/> # a disabled checked checkbox
+		<item id="checkspelling" text="Check Spelling" type="checkbox"/> # an unchecked checkbox
+	</item>
+</menu>		
+</textarea>
+
+
+<textarea id="xml_basic" rows="28" cols="120" style='display:none'>
+<?xml version='1.0' ?>
+<menu> # a top XML tag 
+	<item id="file" text="File"> # a top-level item
+			<item id="new" text="New" /> # a sub-level item
+			<item id="ms1" type ="separator"/> # a sub-level separator item
+			...	
+			<item id="export" text="Export"> 
+				<item id="export_pdf" text="PDF" /> # a sub-level item
+				...
+			</item>
+			...
+	</item>
+</menu>
+</textarea>
+		
+			
+<div id="ev_catcher">
+<div id="menu_" class="hidden">
+	a mandatory top XML tag
+</div>
+<div id="item_" class="hidden">
+	a menu item, either a top- or a sub-level one; each item must have a unique ID 
+</div>
+<div id="item_id" class="hidden">
+	id of a menu item
+</div>
+<div id="item_text" class="hidden">
+	label (text) of a menu item
+</div>
+<div id="item_img" class="hidden">
+	path to the image for the enabled state of a menu item
+</div>
+<div id="item_imgdis" class="hidden">
+	path to the image for the disabled state of a menu item
+</div>
+<div id="item_enabled" class="hidden">
+	sets a menu item as enabled (true) or disabled (false) by default
+</div>
+<div id="item_type" class="hidden">
+	sets menu item's type: whether it is a radiobutton (radio), a checkobox (checkbox), or a separator (separator)
+</div>	
+<div id="item_group" class="hidden">
+	sets the name of a radiogroup for several radiobuttons
+</div>
+<div id="item_checked" class="hidden">
+	specifies whether a radiobutton or a checkbox is checked or not
+</div>
+
+	
+<div>	
+	</div>
+	</body>
+</html>

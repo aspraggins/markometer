@@ -1,0 +1,134 @@
+<!--conf
+<sample>
+              <product version="1.2" edition="std"/>
+                     <modifications>
+                            <modified date="070101"/>
+                     </modifications>
+               </sample>
+ --> 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Events</title>
+	<script>
+		window.dhx_globalImgPath="../../codebase/imgs/";
+	</script>
+	<link rel="STYLESHEET" type="text/css" href="../../codebase/dhtmlxcombo.css">
+	
+	<script  src="../../codebase/dhtmlxcommon.js"></script>
+	<script  src="../../codebase/dhtmlxcombo.js"></script>
+	
+</head>
+  
+
+<body>
+<link rel='STYLESHEET' type='text/css' href='../common/style.css'>
+<table cellspacing="0" cellpadding="0" class="sample_header" border="0">
+	<tr valign="middle">
+		<!-- COMPONENT ICON -->
+		<td width="40" align="center"><img src="../common/dhtmlxcombo_icon.gif" border="0"></td>
+		<!-- COMPONENT NAME -->
+		<td width="150" align="left" nowrap="true">Sample: dhtmlxCombo</td>
+		<!-- SAMPLE TITLE -->
+		<td width="0" align="left" nowrap><b>Events</b></td>
+		<!-- LINK TO COMPONENT PAGE -->
+		<td width="0" align="right"><a href="http://www.dhtmlx.com/docs/products/dhtmlxCombo/index.shtml">dhtmlxCombo main page</a></td>
+		<!-- CLOSE BUTTON -->
+		<td width="50"><div class="sample_close"><a href="javascript:void(0);" onclick="self.close();"><img src="../common/sample_close.gif" width="14" height="14" border="0" alt="X"></a></div></td>
+	</tr>
+</table>
+
+	
+<p>Combo provides four events:<br/>
+- onChange - event called when combo value changed, <br/>  
+- onKeyPressed - event called when key pressed inside combo: has keyCode as the parameter, <br/> 
+- onSelectionChange - event called when preselected value inside combo change,<br/>
+- onBlur - event called when focus moved out from combo.<br/> 
+Event handlers can be set using attachEvent method</p>
+<table>
+<tr>
+<td>
+<div id="combo_zone2" style="width:250px; height:30px;"></div>
+</td>
+</tr>
+<tr>
+<td>
+<div id="logarea" style="background-color:lightgrey;height:218px;width:250px; overflow:auto"></div>
+</td>
+</tr>
+</table>
+
+<div class='sample_code'><div class="hl-main"><pre><span class="hl-code"> 
+ 
+</span><span class="hl-identifier">combo</span><span class="hl-code">.</span><span class="hl-identifier">attachEvent</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">onChange</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-identifier">onChangeFunc</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">combo</span><span class="hl-code">.</span><span class="hl-identifier">attachEvent</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">onKeyPressed</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-identifier">onKeyPressedFunc</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">combo</span><span class="hl-code">.</span><span class="hl-identifier">attachEvent</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">onSelectionChange</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-identifier">onSelectionChangeFunc</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">combo</span><span class="hl-code">.</span><span class="hl-identifier">attachEvent</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">onBlur</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-identifier">onBlurFunc</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">onKeyPressedFunc</span><span class="hl-brackets">(</span><span class="hl-identifier">key</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+ 
+    </span><span class="hl-identifier">doLog</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">Key </span><span class="hl-quotes">&quot;</span><span class="hl-code"> +</span><span class="hl-identifier">key</span><span class="hl-code">+</span><span class="hl-quotes">&quot;</span><span class="hl-string"> was pressed</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">;    
+ 
+</span><span class="hl-brackets">}</span></pre></div></div>
+
+
+	<script>
+var combo =new dhtmlXCombo("combo_zone2","alfa2",250);
+combo.loadXML("data.xml");
+
+function doLog(str){
+			
+	var log = document.getElementById("logarea");
+	log.innerHTML = log.innerHTML+str+"</br>"
+	log.scrollTop = log.scrollHeight;
+}
+
+combo.attachEvent("onChange",onChangeFunc);
+
+combo.attachEvent("onKeyPressed",onKeyPressedFunc);
+
+combo.attachEvent("onSelectionChange",onSelectionChangeFunc);
+
+combo.attachEvent("onBlur",onBlurFunc);
+
+function onChangeFunc(){
+
+	doLog("" +'onChange'+" event has occured");
+	
+	return true;
+}
+function onKeyPressedFunc(key){
+
+	doLog("Key " +key+" was pressed");	
+	
+	return true;
+
+}
+function onSelectionChangeFunc(){
+
+	doLog("Selection was changed");
+	
+	return true;
+}
+
+function onBlurFunc(){
+
+	doLog("" +'onBlur'+" event has occured");
+	
+	return true;
+
+}
+
+	</script>
+
+
+<!-- FOOTER -->
+<table callspacing="0" cellpadding="0" border="0" class="sample_footer"><tr><td style="padding-left: 8px;">&copy; <a href="http://www.dhtmlx.com">DHTMLX LTD</a>. All rights reserved</td></tr></table>
+<!-- FOOTER -->
+
+</body>
+</html>

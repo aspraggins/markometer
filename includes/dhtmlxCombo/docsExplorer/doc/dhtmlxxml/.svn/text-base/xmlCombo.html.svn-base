@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>dhtmlxCombo XML</title>
+		<link rel="stylesheet" href="data.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<script src="data.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body id="xml_scheme" onload="init_first_scheme()">
+		<div id="informer">
+				<span id="start_me"  onclick="init_scheme('basic',this)">Basic</span>
+				<span onclick="init_scheme('full',this)">Full</span>
+				<span style="text-decoration: none; cursor: default; border: none;"><big><b>|</b></big></span>
+				<span onclick="init_scheme('plain',this)">Plain view (<small><img src="../../codebase/imgs/icon_html.gif" border="0" alt="" style="margin-bottom: -3px;"> html</small>)</span>
+				<span><a href="combo_xml.pdf" target="_blank">Plain view (<small><img src="../../codebase/imgs/icon_pdf.gif" border="0" alt="" style="margin-bottom: -3px;"> pdf</small>)</a></span>
+		</div>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" id="xml_1">
+			<tr><th width="50%"></th><th width="50%"></td></tr>
+		</table>
+		
+<textarea id="xml_full" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" encoding="iso-8859-1" ?> #encoding can be important 
+<complete add="true">
+	<option value="1">One</option>
+	<option value="2" css="font-weight:bold;">Two</option>	#custom css style
+	<option value="3" img_src="some.gif">Three</option>
+	<option value="4" ><![CDATA[  # by using CDATA 
+			<strong>four</strong>		#option text with HTML formatting can be set
+	]]></option>
+</complete>
+</textarea>
+
+
+<textarea id="xml_basic" rows="28" cols="120" style='display:none'>
+<?xml version="1.0" ?> 
+<complete >
+	<option value="1">One</option> # one tag, for one option
+	<option value="2">Two</option>
+	<option value="3">Three</option>
+</complete>
+</textarea>
+		
+			
+<div id="ev_catcher">
+	
+<div id="option_" class="hidden">
+	represent option of combobox<br>
+	Content of tag used as option label<br/>
+	<h4>Attributes</h4>
+	<li>value - value of option</li>
+	<li>css - styles of option</li>
+	<li>img_src - image for combo with images</li>
+</div>	
+<div id="option_value" class="hidden">
+	value for related option<br> if skipped - value will be set the same as option's label <br> can contain any HTML, while it correctly escaped
+</div>	
+<div id="option_css" class="hidden">
+	any css text, which need to be applied to option in question
+</div>	
+<div id="option_img_src" class="hidden">
+	for combo with images , this attribute contains url to image related to option ( if none set, default image will be used )<br>
+	has no sense for combo in default mode ( without images )
+</div>	
+
+
+
+
+<div id="complete_" class="hidden">
+	just top xml tag, has no special meaning
+	<h4>Optional attributes</h4>
+	<li>add - set mode of options adding</li>
+</div>
+
+<div id="complete_add" class="hidden">
+	If attribute exists - options from XML will be added to existing list, <br>
+	in other case, all previous options will be deleted 
+</div>
+
+
+
+
+
+	
+<div>	
+	</div>
+	</body>
+</html>

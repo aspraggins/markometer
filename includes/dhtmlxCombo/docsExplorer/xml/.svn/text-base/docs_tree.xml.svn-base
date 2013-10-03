@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<tree id="0">
+			<item id="common" text="DHTMLX Common" im0="dhtmlxcommon_icon.gif" im1="dhtmlxcommon_icon.gif" im2="dhtmlxcommon_icon.gif">
+				<userdata name="url">
+					doc
+				</userdata>
+				<item text="dhtmlx Components XML Structure" id="dhtmlx_xml">
+					<userdata name="url">
+						dhtmlxxml/index.html
+					</userdata>
+				</item>	
+				<item text="LibCompiler Tool" id="libc_">
+					<userdata name="url">
+						libCompiler/guide.html
+					</userdata>
+					<item text="Guide" id="libc_guide"><userdata name="url">guide.html</userdata><item id="libc_wzl_" text="Introduction"><item id="libc_wzl_1" text="Scope of the Document"/><item id="libc_wzl_4" text="Target Readers"/></item><item id="libc_ak25" text="What is libComplier"/><item id="libc_ak251" text="libComplier's Interface"><item id="libc_ak253" text="Tree"/><item id="libc_n76g0" text="Details"/><item id="libc_ea7d" text="Used Skin"/><item id="libc_ea7d3" text="Toolbar"/></item><item id="libc_rcfk" text="How libComplier Works"/></item>
+				</item>	
+				<item text="Handling special characters" id="all_art_handlspecchars">
+	    	        <userdata name="url">Handling_special_characters.html</userdata>
+		        </item>
+			</item>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<item id="dhtmlxcombo" text="dhtmlxCombo" im0="dhtmlxcombo_icon.gif" im1="dhtmlxcombo_icon.gif" im2="dhtmlxcombo_icon.gif">
+				<userdata name="url">
+					../dhtmlxCombo/doc
+				</userdata>
+				<userdata name="thisurl">
+					../dhtmlxCombo/doc/guide.html
+				</userdata>
+				<item text="Main Features" id="combo_mf">
+					<userdata name="url">guide.html</userdata>
+				</item>
+				<item text="Supported Browsers" id="combo_browsers">
+					<userdata name="url">guide.html</userdata>
+				</item>
+				<item text="Guide" id="combo_guide">
+					<userdata name="url">guide.html</userdata>
+					<item text="Initializing object" id="combo_init">
+					</item>
+					<item text="Adding options" id="combo_adding_options">
+					</item>
+					<item text="Integration with FORM" id="combo_form">
+					</item>
+					<item text="Filtering" id="combo_filtering">
+					</item>
+					<item text="Operations with comobobox" id="combo_operation1">
+					</item>
+					<item text="Operations with comobobox's options" id="combo_operation2">
+					</item>
+
+				</item>
+				<item text="API Functions" id="combo_api">
+					<userdata name="url">alpha.html</userdata>
+	        	 	<item text="Alphabeticaly sorted" id="combo_api_a">
+						<userdata name="url">alpha.html</userdata>
+					</item>
+					<item text="Events" id="combo_api_events" im0="leaf_new.gif">
+						<userdata name="url">events.html</userdata>
+					</item>
+				</item>
+			</item>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</tree>

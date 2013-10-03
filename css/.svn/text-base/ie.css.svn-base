@@ -1,0 +1,9 @@
+body{	width:expression(document.documentElement.clientWidth < 1000 ? "1000px" : "auto");}* html .content-boxes .arrow-red strong {
+	background-position: -9999px -9999px;
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/arrow-red.png', sizingmethod='crop');
+}
+* html .content-boxes .arrow-green strong {
+	background:none;
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/arrow-green.png', sizingmethod='crop');
+}
+.content-boxes .bar .row a span em{	margin-top:expression(this.parentNode.offsetHeight > this.offsetHeight ? ((this.parentNode.offsetHeight-this.offsetHeight)/2 + "px") : "0");}.content-boxes .something-box span{	margin-top:expression(this.parentNode.offsetHeight > this.offsetHeight ? ((this.parentNode.offsetHeight-this.offsetHeight)/2 + "px") : "0");}.search-container .boxes .box .list li a em{	margin-top:expression(this.parentNode.offsetHeight > this.offsetHeight ? ((this.parentNode.offsetHeight-this.offsetHeight)/2 + "px") : "0");}* html .content-boxes .box strong{zoom:1;}* html #content .steps-form .steps-list{zoom:1;}#header .sub-nav li a{	background-image: expression( (this.parentNode===this.parentNode.parentNode.childNodes[0]) ? "none" : "auto");}.logo a span{	margin-top:expression(this.parentNode.offsetHeight > this.offsetHeight ? ((this.parentNode.offsetHeight-this.offsetHeight)/2 + "px") : "0");}

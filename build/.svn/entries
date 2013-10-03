@@ -1,0 +1,71 @@
+10
+
+dir
+7814
+svn+ssh://rneel@mp41.com/svnrepos/web/trunk/htdocs/build
+svn+ssh://rneel@mp41.com/svnrepos/web
+
+
+
+2012-03-21T16:47:47.905204Z
+7807
+rneel
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+c4476d4a-f853-0410-b486-cc46d5653d82
+
+actionpages
+dir
+
+campaigns
+dir
+
+forms
+dir
+
+index.php
+file
+
+
+
+
+2011-08-08T23:34:12.000000Z
+e725e09476aeb94b997ac03dfb629dc6
+2011-08-07T21:52:25.163404Z
+7487
+jeklund
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1804
+

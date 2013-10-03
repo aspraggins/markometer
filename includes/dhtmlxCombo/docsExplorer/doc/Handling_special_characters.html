@@ -1,0 +1,76 @@
+<html>
+
+<head>
+
+
+<link rel="STYLESHEET" type="text/css" href="../common/styles.css">
+</head>
+<body>
+	<table border="0" cellpadding="0" cellspacing="0" class="sample_header" zid="71">
+		<tbody zid="3">
+			<tr valign="center" zid="4">
+				<td align="center" width="10" zid="5">&nbsp;</td>
+				<td align="left" zid="6">
+					<p zid="224">
+						<a href="http://www.dhtmlx.com/" zid="7">DHTMLX</a> Documentation
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--- CONTENT. Starts --->
+	<h1 id="ep6t">Handling special characters</h1>
+<br id="ep6t0">
+<h3 id="ep6t1">Special characters in XML</h3>
+When data loaded from XML file|string there are some special characters which can cause problem.<br id="ep6t2">
+For XML those are&nbsp; &lt; &gt; &amp;<br id="ep6t3">
+<br id="ep6t4">
+There are two ways to store them in XML<br id="ep6t5">
+<br id="ep6t6">
+a) Escaping - the characters can be replaced with related XML entities<br id="ep6t7">
+<blockquote id="ep6t8">&nbsp;&nbsp;&nbsp; &gt; =&gt; &amp;gt;<br id="ep6t9">
+&nbsp;&nbsp;&nbsp; &lt; =&gt; &amp;lt;<br id="ep6t10">
+&nbsp;&nbsp;&nbsp; &amp; =&gt; &amp;amp;<br id="ep6t11">
+</blockquote>
+&nbsp;&nbsp; &nbsp;<br id="ep6t12">
+b) use CDATA section - any data can be stored inside CDATA section<br id="ep6t13">
+<br id="ep6t14">
+<br id="ep6t15">
+<blockquote id="ep6t16">&nbsp;&nbsp;&nbsp; &lt;cell&gt; Specail characters &lt; &gt; &amp;&lt;/cell&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;= Incorrect<br id="ep6t17">
+&nbsp;&nbsp;&nbsp; &lt;cell&gt; Specail characters &amp;lt; &amp;gt; &amp;amp;&lt;/cell&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;= Correct<br id="ep6t18">
+&nbsp;&nbsp;&nbsp; &lt;cell&gt;&lt;![CDATA[ Specail characters &lt; &gt; &amp;]]&gt;&lt;/cell&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;= Correct<br id="ep6t19">
+</blockquote>
+&nbsp;&nbsp;&nbsp; <br id="ep6t20">
+<h3 id="ep6t21">Special encodings in XML</h3>
+Component is encoding agnostic, it will support any encoding which supported by browser, just be sure to have correct XML header<br id="ep6t22">
+&nbsp;&nbsp;&nbsp; &lt;?xml version="1.0" encoding="ISO-8859-1" ?&gt;<br id="ep6t23">
+The encoding attribute must specify correct encoding value. ( if such attribute ommited, UTF-8 will be used by default)<br id="ep6t24">
+&nbsp;&nbsp;&nbsp; <br id="ep6t25">
+<h3 id="ep6t26">Special characters in dhtmlxGrid</h3>
+By default grid threat all incoming data as HTML, so it will convert any HTML special chars ( and again they are include &lt; &gt; &amp; characters )<br id="ep6t27">
+To resolve such issue , the grid supports "pure" text excell. In contrast with default ones - they will not allow any HTML content inside them, but will preserve any special characters and allow correct edition of such special chars.<br id="ep6t28">
+<br id="ep6t29">
+There are next "pure text" cell types<br id="ep6t30">
+&nbsp;&nbsp;&nbsp; rotxt - readonly text excell<br id="ep6t31">
+&nbsp;&nbsp;&nbsp; edtxt - single line editor text excell<br id="ep6t32">
+&nbsp;&nbsp;&nbsp; txttxt - multi-line text editor<br id="ep6t33">
+&nbsp;&nbsp;&nbsp; corotxt - text only selectbox<br id="ep6t34">
+&nbsp;&nbsp;&nbsp; <br id="ep6t35">
+<blockquote id="ep6t36">mygrid.setColTypes("rotxt")<br id="ep6t37">
+...<br id="ep6t38">
+mygrid.addRow(1,"&lt;&amp;&gt;"); // will render text correctly<br id="ep6t39">
+</blockquote>
+<br id="ep6t40">
+<h3 id="ep6t41">Special characters serialization<br id="ep6t42">
+</h3>
+When grid serialized back to XML, special characters in cells can corrupt result XML. To prevent such issue , you can force usage of CDATA while serialzation. ( CDATA make any content safe, so result XML will be valid in any case )<br id="ep6t43">
+Such mode can be enabled with&nbsp; setSerializationLevel command<br id="ep6t44">
+<br id="ep6t45">
+<blockquote id="ep6t46">grid.setSerializationLevel(false,false,false,false,false,true);<br id="ep6t47">
+</blockquote>
+<br id="ep6t48">
+&nbsp;<br>
+	<!--- CONTENT. Ends --->
+	<div class="copyright" zid="223">&copy; DHTMLX, 2008</div>
+</body>
+</html>

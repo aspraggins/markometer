@@ -1,0 +1,72 @@
+Congratulations on your purchase of WysiwygPro 3 for developers!
+You can now begin adding rich HTML word-processing to your PHP applications.
+
+Before using WysiwygPro please make sure that you have purchased the correct license for your
+intended use. Please see WP3license.pdf.
+
+For documentation please visit the online developer manual: http://www.wysiwygpro.com/developer/
+
+FILE AND FOLDER DESCRIPTIONS:
+
+**Examples**
+This folder contains many detailed examples demonstrating how to use wysiwygPro. 
+Please see the Read Me file inside the folder for more information.
+
+**Extras**
+To keep the install footprint down some wysiwygPro libraries that are not currently used have
+been removed and placed in this folder. However you can add them back into wysiwygPro if you need them.
+Please see the Read Me file inside the folder for more information.
+
+**wysiwygPro**
+The wysiwygPro application folder. 
+To use wysiwygPro you will need to include wysiwygPro/wysiwygPro.class.php
+
+A quick example:
+
+<?php
+include_once('wysiwygPro/wysiwygPro.class.php');
+$editor = new wysiwygPro();
+$editor->name = 'content';
+$editor->value = '<p>Some HTML code..</p>';
+$editor->display();
+?>
+
+The wysiwygPro API is very powerful, please see the online documentation for more info.
+http://www.wysiwygpro.com/developer/
+
+**WP3license.pdf**
+WysiwygPro licensing information.
+
+**READ ME.txt**
+This file.
+
+CHECKING YOUR INSTALLATION
+After uploading the wysiwygPro folder to your PHP enabled web server point your browser at wysiwygPro/installCheck.php to check your installation. 
+You can safely delete this script once you have the editor working correctly.
+
+If you have problems please check the troubleshooting section of the online documentation, http://www.wysiwygpro.com/developer/
+Or send us a support request by visiting support.vizimetrics.com
+
+OTHER USEFUL STUFF!
+There is an example of how to create plugins for WysiwygPro located at wysiwygPro/plugins/EXAMPLE/
+You can load the EXAMPLE plugin like this:
+
+<?php
+include_once('wysiwygPro/wysiwygPro.class.php');
+$editor = new wysiwygPro();
+$editor->name = 'content';
+$editor->value = '<p>Some HTML code..</p>';
+$editor->loadPlugin('EXAMPLE');
+$editor->display();
+?>
+
+You can also get ideas from the other plugins in the wysiwygPro/plugins/ folder.
+Many of wysiwygPro's core plugins are located at wysiwygPro/core/plugins/, these plugins
+use the same architecture as the regular plugins, they are just located somewhere
+different. You can read the source code and get ideas from them too.
+
+We hope you enjoy WysiwygPro 3 as much as we enjoyed developing it for you.
+Most of WysiwygPro 3's new features and API are a direct result of feedback from developers like yourself. 
+Thank you for making WysiwygPro what it is today!
+
+(c) Copyright 2007 Chris Bolt and ViziMetrics Inc.

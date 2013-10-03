@@ -1,0 +1,524 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <title>spinner.gif at d4dcb2502aab88c9a3b34454d0ad265eeb203f1e from okonet's modalbox - GitHub</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub" />
+    <link rel="fluid-icon" href="http://github.com/fluidicon.png" title="GitHub" />
+
+    
+      <link href="http://assets3.github.com/stylesheets/bundle.css?180c214baeba2d8a1194e7b48ea7581cfee3e505" media="screen" rel="stylesheet" type="text/css" />
+    
+
+    
+      
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script src="http://assets2.github.com/javascripts/bundle.js?180c214baeba2d8a1194e7b48ea7581cfee3e505" type="text/javascript"></script>
+      
+    
+    
+  
+    
+  
+
+  <link href="http://github.com/feeds/okonet/commits/modalbox/d4dcb2502aab88c9a3b34454d0ad265eeb203f1e" rel="alternate" title="Recent Commits to modalbox:d4dcb2502aab88c9a3b34454d0ad265eeb203f1e" type="application/atom+xml" />
+
+    <meta name="description" content="Mac OS X style javascript pop-ups for your browser (based on prototype + script.aculo.us)" />
+
+
+    
+
+    <script type="text/javascript">
+      github_user = null
+    </script>
+  </head>
+
+  
+
+  <body>
+    
+
+    <div id="main">
+      <div id="header" class="">
+        <div class="site">
+          <div class="logo">
+            <a href="http://github.com"><img src="/images/modules/header/logov3.png" alt="github" /></a>
+          </div>
+          
+            <div class="topsearch">
+  <form action="/search" id="top_search_form" method="get">
+    <input type="search" class="search" name="q" /> <input type="submit" value="Search" />
+    <input type="hidden" name="type" value="Everything" />
+    <input type="hidden" name="repo" value="" />
+    <input type="hidden" name="langOverride" value="" />
+    <input type="hidden" name="start_value" value="1" />
+  </form>
+  <div class="links">
+    <a href="/repositories">Browse</a> | <a href="/guides">Guides</a> | <a href="/search">Advanced</a>
+  </div>
+</div>
+          
+            
+              <div class="actions">
+                
+                  <a href="http://github.com">Home</a>
+                  <a href="/plans"><b><u>Pricing and Signup</u></b></a>
+                  <a href="http://github.com/popular/forked">Repositories</a>
+                  
+                  <a href="/blog">Blog</a>
+                
+                <a href="https://github.com/login">Login</a>
+              </div>
+            
+        </div>
+      </div>
+
+      
+        
+    <div id="repo_menu">
+      <div class="site">
+        <ul>
+          
+            <li class="active"><a href="http://github.com/okonet/modalbox/tree/">Source</a></li>
+
+            <li class=""><a href="http://github.com/okonet/modalbox/commits/">Commits</a></li>
+
+            
+            <li class=""><a href="/okonet/modalbox/network">Network (11)</a></li>
+
+            
+
+            
+              
+              <li class=""><a href="/okonet/modalbox/issues">Issues (4)</a></li>
+            
+
+            
+              
+              <li class=""><a href="/okonet/modalbox/downloads">Downloads (1)</a></li>
+            
+
+            
+              
+              <li class=""><a href="http://wiki.github.com/okonet/modalbox">Wiki (2)</a></li>
+            
+
+            <li class=""><a href="/okonet/modalbox/graphs">Graphs</a></li>
+
+            
+
+          
+        </ul>
+      </div>
+    </div>
+
+  <div id="repo_sub_menu">
+    <div class="site">
+      <div class="joiner"></div>
+      
+
+      
+
+      
+
+      
+    </div>
+  </div>
+
+  <div class="site">
+    
+
+
+
+
+
+<div id="repos">
+  
+
+
+<script type="text/javascript">
+  GitHub.currentCommitRef = "d4dcb2502aab88c9a3b34454d0ad265eeb203f1e"
+  GitHub.currentRepoOwner = "okonet"
+  GitHub.currentRepo = "modalbox"
+  
+</script>
+
+
+
+  <div class="repo public" id="repo_details">
+    <div class="title">
+      <div class="path">
+        <a href="/okonet">okonet</a> / <b><a href="http://github.com/okonet/modalbox/tree">modalbox</a></b>
+
+        
+
+          <span id="edit_button" style="display:none;">
+            <a href="/okonet/modalbox/edit"><img alt="edit" class="button" src="http://assets2.github.com/images/modules/repos/edit_button.png?180c214baeba2d8a1194e7b48ea7581cfee3e505" /></a>
+          </span>
+
+          
+            <span id="pull_request_button" style="display:none;">
+              <a href="/okonet/modalbox/pull_request/" class="pull_request_button"><img alt="pull request" class="button" src="http://assets2.github.com/images/modules/repos/pull_request_button.png?180c214baeba2d8a1194e7b48ea7581cfee3e505" /></a>
+            </span>
+            
+            <span id="fast_forward_button" style="display:none;">
+              <a href="/okonet/modalbox/fast_forward" id="ff_button"><img alt="fast forward" class="button" src="http://assets1.github.com/images/modules/repos/fast_forward_button.png?180c214baeba2d8a1194e7b48ea7581cfee3e505" /></a>
+            </span>
+
+            <span id="fork_button">
+              <a href="/okonet/modalbox/fork"><img alt="fork" class="button" src="http://assets2.github.com/images/modules/repos/fork_button.png?180c214baeba2d8a1194e7b48ea7581cfee3e505" /></a>
+            </span>
+          
+
+          <span id="watch_button">
+            <a href="/okonet/modalbox/toggle_watch" class="toggle_watch"><img alt="watch" class="button" src="http://assets2.github.com/images/modules/repos/watch_button.png?180c214baeba2d8a1194e7b48ea7581cfee3e505" /></a>
+          </span>
+          
+          <span id="unwatch_button" style="display:none;">
+            <a href="/okonet/modalbox/toggle_watch" class="toggle_watch"><img alt="watch" class="button" src="http://assets1.github.com/images/modules/repos/unwatch_button.png?180c214baeba2d8a1194e7b48ea7581cfee3e505" /></a>
+          </span>
+
+          
+            <a href="#" id="download_button" rel="okonet/modalbox"><img alt="download tarball" class="button" src="http://assets0.github.com/images/modules/repos/download_button.png?180c214baeba2d8a1194e7b48ea7581cfee3e505" /></a>
+          
+        
+      </div>
+
+      <div class="security private_security" style="display:none">
+        <a href="#private_repo" rel="facebox"><img src="/images/icons/private.png" alt="private" /></a>
+      </div>
+
+      <div id="private_repo" class="hidden">
+        This repository is private.
+        All pages are served over SSL and all pushing and pulling is done over SSH.
+        No one may fork, clone, or view it unless they are added as a <a href="/okonet/modalbox/edit">member</a>.
+
+        <br/>
+        <br/>
+        Every repository with this icon (<img src="/images/icons/private.png" alt="private" />) is private.
+      </div>
+
+      <div class="security public_security" style="">
+        <a href="#public_repo" rel="facebox"><img src="/images/icons/public.png" alt="public" /></a>
+      </div>
+
+      <div id="public_repo" class="hidden">
+        This repository is public.
+        Anyone may fork, clone, or view it.
+
+        <br/>
+        <br/>
+        Every repository with this icon (<img src="/images/icons/public.png" alt="public" />) is public.
+      </div>
+
+      
+
+        <div class="flexipill">
+          <a href="/okonet/modalbox/network">
+          <table cellpadding="0" cellspacing="0">
+            <tr><td><img alt="Forks" src="http://assets3.github.com/images/modules/repos/pills/forks.png?180c214baeba2d8a1194e7b48ea7581cfee3e505" /></td><td class="middle"><span>11</span></td><td><img alt="Right" src="http://assets3.github.com/images/modules/repos/pills/right.png?180c214baeba2d8a1194e7b48ea7581cfee3e505" /></td></tr>
+          </table>
+          </a>
+        </div>
+
+        <div class="flexipill">
+          <a href="/okonet/modalbox/watchers">
+          <table cellpadding="0" cellspacing="0">
+            <tr><td><img alt="Watchers" src="http://assets2.github.com/images/modules/repos/pills/watchers.png?180c214baeba2d8a1194e7b48ea7581cfee3e505" /></td><td class="middle"><span>56</span></td><td><img alt="Right" src="http://assets3.github.com/images/modules/repos/pills/right.png?180c214baeba2d8a1194e7b48ea7581cfee3e505" /></td></tr>
+          </table>
+          </a>
+        </div>
+      </div>
+
+    <div class="meta">
+      <table>
+        
+        <tr>
+          <td class="label">Description:</td>
+          <td>
+            <span id="repository_description" rel="/okonet/modalbox/edit/update">Mac OS X style javascript pop-ups for your browser (based on prototype + script.aculo.us)</span>
+            <a href="#description" class="edit_link action" style="display:none;">edit</a>
+          </td>
+        </tr>
+
+        
+            <tr>
+              <td class="label">Homepage:</td>
+              <td>
+                                
+                <span id="repository_homepage" rel="/okonet/modalbox/edit/update">
+                  <a href="http://okonet.ru/projects/modalbox">http://okonet.ru/projects/modalbox</a>
+                </span>
+                <a href="#homepage" class="edit_link action" style="display:none;">edit</a>
+              </td>
+            </tr>
+
+          
+            <tr>
+              <td class="label"><span id="public_clone_text" style="display:none;">Public&nbsp;</span>Clone&nbsp;URL:</td>
+              
+              <td>
+                <a href="git://github.com/okonet/modalbox.git" class="git_url_facebox" rel="#git-clone">git://github.com/okonet/modalbox.git</a>
+                      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+              width="110"
+              height="14"
+              class="clippy"
+              id="clippy" >
+      <param name="movie" value="/flash/clippy.swf"/>
+      <param name="allowScriptAccess" value="always" />
+      <param name="quality" value="high" />
+      <param name="scale" value="noscale" />
+      <param NAME="FlashVars" value="text=git://github.com/okonet/modalbox.git">
+      <param name="bgcolor" value="#F0F0F0">
+      <param name="wmode" value="opaque">
+      <embed src="/flash/clippy.swf"
+             width="110"
+             height="14"
+             name="clippy"
+             quality="high"
+             allowScriptAccess="always"
+             type="application/x-shockwave-flash"
+             pluginspage="http://www.macromedia.com/go/getflashplayer"
+             FlashVars="text=git://github.com/okonet/modalbox.git"
+             bgcolor="#F0F0F0"
+             wmode="opaque"
+      />
+      </object>
+
+                <div id="git-clone" style="display:none;">
+                  Give this clone URL to anyone.
+                  <br/>
+                  <code>git clone git://github.com/okonet/modalbox.git </code>
+                </div>
+              </td>
+            </tr>
+          
+          
+          <tr id="private_clone_url" style="display:none;">
+            <td class="label">Your Clone URL:</td>
+            
+            <td>
+
+              <div id="private-clone-url">
+                <a href="git@github.com:okonet/modalbox.git" class="git_url_facebox" rel="#your-git-clone">git@github.com:okonet/modalbox.git</a>
+                <input type="text" value="git@github.com:okonet/modalbox.git" style="display: none;" />
+                      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+              width="110"
+              height="14"
+              class="clippy"
+              id="clippy" >
+      <param name="movie" value="/flash/clippy.swf"/>
+      <param name="allowScriptAccess" value="always" />
+      <param name="quality" value="high" />
+      <param name="scale" value="noscale" />
+      <param NAME="FlashVars" value="text=git@github.com:okonet/modalbox.git">
+      <param name="bgcolor" value="#F0F0F0">
+      <param name="wmode" value="opaque">
+      <embed src="/flash/clippy.swf"
+             width="110"
+             height="14"
+             name="clippy"
+             quality="high"
+             allowScriptAccess="always"
+             type="application/x-shockwave-flash"
+             pluginspage="http://www.macromedia.com/go/getflashplayer"
+             FlashVars="text=git@github.com:okonet/modalbox.git"
+             bgcolor="#F0F0F0"
+             wmode="opaque"
+      />
+      </object>
+
+              </div>
+
+              <div id="your-git-clone" style="display:none;">
+                Use this clone URL yourself.
+                <br/>
+                <code>git clone git@github.com:okonet/modalbox.git </code>
+              </div>
+            </td>
+          </tr>
+          
+          
+
+          
+
+          
+      </table>
+
+      
+        <div class="pledgie">
+          <a href='http://pledgie.com/campaigns/1686'><img alt='Click here to lend your support to: modalbox and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/1686.png?skin_name=chrome' border='0' /></a>
+        </div>
+          </div>
+  </div>
+
+
+
+
+
+
+</div>
+
+
+  <div id="commit">
+    <div class="group">
+        
+  <div class="envelope commit">
+    <div class="human">
+      
+        <div class="message"><pre><a href="/okonet/modalbox/commit/d4dcb2502aab88c9a3b34454d0ad265eeb203f1e">Fixed width bug</a> </pre></div>
+      
+
+      <div class="actor">
+        <div class="gravatar">
+          
+          <img alt="" height="30" src="http://www.gravatar.com/avatar/8cdcbe27173f6f9a8023ba47be9e777d?s=30&amp;d=http%3A%2F%2Fgithub.com%2Fimages%2Fgravatars%2Fgravatar-30.png" width="30" />
+        </div>
+        <div class="name">exby <span>(author)</span></div>
+          <div class="date">
+            <abbr class="relatize" title="2009-05-24 05:42:25">Sun May 24 05:42:25 -0700 2009</abbr> 
+          </div>
+      </div>
+  
+      
+  
+    </div>
+    <div class="machine">
+      <span>c</span>ommit&nbsp;&nbsp;<a href="/okonet/modalbox/commit/d4dcb2502aab88c9a3b34454d0ad265eeb203f1e" hotkey="c">d4dcb2502aab88c9a3b34454d0ad265eeb203f1e</a><br />
+      <span>t</span>ree&nbsp;&nbsp;&nbsp;&nbsp;<a href="/okonet/modalbox/tree/d4dcb2502aab88c9a3b34454d0ad265eeb203f1e" hotkey="t">c7c20a03bc8384adf79d520e10f611022b5eb52d</a><br />
+  
+      
+        <span>p</span>arent&nbsp;
+        
+        <a href="/okonet/modalbox/tree/796003b1c4bc237f37847fbc0c5caac4a7c860f5" hotkey="p">796003b1c4bc237f37847fbc0c5caac4a7c860f5</a>
+      
+  
+    </div>
+  </div>
+
+    </div>
+  </div>
+
+
+
+  
+    <div id="path">
+      <b><a href="/okonet/modalbox/tree/796003b1c4bc237f37847fbc0c5caac4a7c860f5">modalbox</a></b> / spinner.gif       <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+              width="110"
+              height="14"
+              class="clippy"
+              id="clippy" >
+      <param name="movie" value="/flash/clippy.swf"/>
+      <param name="allowScriptAccess" value="always" />
+      <param name="quality" value="high" />
+      <param name="scale" value="noscale" />
+      <param NAME="FlashVars" value="text=spinner.gif">
+      <param name="bgcolor" value="#FFFFFF">
+      <param name="wmode" value="opaque">
+      <embed src="/flash/clippy.swf"
+             width="110"
+             height="14"
+             name="clippy"
+             quality="high"
+             allowScriptAccess="always"
+             type="application/x-shockwave-flash"
+             pluginspage="http://www.macromedia.com/go/getflashplayer"
+             FlashVars="text=spinner.gif"
+             bgcolor="#FFFFFF"
+             wmode="opaque"
+      />
+      </object>
+
+    </div>
+
+    <div id="files">
+      <div class="file">
+        <div class="meta">
+          <div class="info">
+            <span>100644</span>
+            <span></span>
+            <span>7.823 kb</span>
+          </div>
+          <div class="actions">
+            
+            <a href="/okonet/modalbox/raw/796003b1c4bc237f37847fbc0c5caac4a7c860f5/spinner.gif" id="raw-url">raw</a>
+            
+            <a href="/okonet/modalbox/commits/master/spinner.gif">history</a>
+          </div>
+        </div>
+        
+  <div class="data syntax">
+    
+      <div class="image">
+        
+        
+          <img src="/okonet/modalbox/raw/796003b1c4bc237f37847fbc0c5caac4a7c860f5/spinner.gif" />
+        
+      </div>
+    
+  </div>
+
+
+      </div>
+    </div>
+    
+  
+
+
+  </div>
+
+      
+
+      <div class="push"></div>
+    </div>
+
+    <div id="footer">
+      <div class="site">
+        <div class="info">
+          <div class="links">
+            <a href="http://github.com/blog"><b>Blog</b></a> |
+            <a href="http://support.github.com/">Support</a> |
+            <a href="http://github.com/training">Training</a> |
+            <a href="http://github.com/contact">Contact</a> |
+            <a href="http://develop.github.com">API</a> |
+            <a href="http://twitter.com/github">Status</a> |
+            <a href="http://twitter.com/github">GitHub on Twitter</a> |
+            <a href="http://github.com/guides/home">Help</a>
+
+         </div>
+          <div class="company">
+            <span id="_rrt" title="0.73821s from xc88-s00009">GitHub</span>&trade;
+            is <a href="http://logicalawesome.com/">Logical Awesome</a> &copy;2009 | <a href="/site/terms">Terms of Service</a> | <a href="/site/privacy">Privacy Policy</a>
+          </div>
+        </div>
+        <div class="sponsor">
+          <a href="http://engineyard.com"><img src="/images/modules/footer/ey-rubyhosting.png" alt="Engine Yard" /></a>
+        </div>
+      </div>
+    </div>
+
+    <div id="coming_soon" style="display:none;">
+      This feature is coming soon.  Sit tight!
+    </div>
+
+    
+        <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    var pageTracker = _gat._getTracker("UA-3769691-2");
+    pageTracker._initData();
+    pageTracker._trackPageview();
+    </script>
+
+    
+  </body>
+</html>
+

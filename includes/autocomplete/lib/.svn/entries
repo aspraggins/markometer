@@ -1,0 +1,34 @@
+10
+
+dir
+7814
+svn+ssh://rneel@mp41.com/svnrepos/web/trunk/htdocs/includes/autocomplete/lib
+svn+ssh://rneel@mp41.com/svnrepos/web
+
+
+
+2009-07-09T19:31:14.229124Z
+3016
+rneel
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+c4476d4a-f853-0410-b486-cc46d5653d82
+
+prototype
+dir
+
+scriptaculous
+dir
+
