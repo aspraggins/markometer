@@ -3,4 +3,5 @@
 //another comment for more testing
 //testing of fork
 //another fork test to write to remote
+//0
 ?>
