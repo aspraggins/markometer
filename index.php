@@ -1,4 +1,5 @@
 <?php # Dashboard - Main Home Page
+//alan comment for GIT test
 $metatitle = 'Your Dashboard';
 $returnurl = '/login/?returnpage=';
 include ($_SERVER['DOCUMENT_ROOT'] . '/inc/header.php');
